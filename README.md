@@ -1,4 +1,4 @@
-# olca-ecospold-1
+# openLCA EcoSpold v1 API
 
 This is a Java library for reading and writing data sets in the
 [EcoSpold 01 data format](https://ecoinvent.org/the-ecoinvent-database/data-formats/ecospold1/).
