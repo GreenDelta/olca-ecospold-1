@@ -1,8 +1,5 @@
 package org.openlca.ecospold;
 
-import ecospold.internal.process.CountryCode;
-import org.openlca.ecospold.internal.process.CountryCode;
-
 public interface IDataGeneratorAndPublication {
 
 	/**
@@ -111,21 +108,11 @@ public interface IDataGeneratorAndPublication {
 
 	/**
 	 * Gets the value of the countryCode property.
-	 *
-	 * @return
-	 *     possible object is
-	 *     {@link CountryCode }
-	 *
 	 */
 	public abstract ICountryCode getCountryCode();
 
 	/**
 	 * Sets the value of the countryCode property.
-	 *
-	 * @param value
-	 *     allowed object is
-	 *     {@link CountryCode }
-	 *
 	 */
 	public abstract void setCountryCode(ICountryCode value);
 

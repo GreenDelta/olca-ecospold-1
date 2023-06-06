@@ -1,6 +1,5 @@
 package org.openlca.ecospold;
 
-import ecospold.internal.process.*;
 import org.openlca.ecospold.internal.process.*;
 
 import javax.xml.transform.Source;
