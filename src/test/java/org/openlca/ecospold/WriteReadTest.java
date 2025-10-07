@@ -37,7 +37,7 @@ public class WriteReadTest {
 		var name = EcoSpold.read(file)
 			.orElseThrow()
 			.getDataset()
-			.get(0)
+			.getFirst()
 			.getMetaInformation()
 			.getProcessInformation()
 			.getReferenceFunction()
