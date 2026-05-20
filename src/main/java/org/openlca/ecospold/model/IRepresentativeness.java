@@ -2,24 +2,24 @@ package org.openlca.ecospold.model;
 
 public interface IRepresentativeness {
 
-	public abstract Float getPercent();
+	Float getPercent();
 
-	public abstract void setPercent(Float value);
+	void setPercent(Float value);
 
-	public abstract String getProductionVolume();
+	String getProductionVolume();
 
-	public abstract void setProductionVolume(String value);
+	void setProductionVolume(String value);
 
-	public abstract String getSamplingProcedure();
+	String getSamplingProcedure();
 
-	public abstract void setSamplingProcedure(String value);
+	void setSamplingProcedure(String value);
 
-	public abstract String getExtrapolations();
+	String getExtrapolations();
 
-	public abstract void setExtrapolations(String value);
+	void setExtrapolations(String value);
 
-	public abstract String getUncertaintyAdjustments();
+	String getUncertaintyAdjustments();
 
-	public abstract void setUncertaintyAdjustments(String value);
+	void setUncertaintyAdjustments(String value);
 
 }

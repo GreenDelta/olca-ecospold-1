@@ -4,70 +4,70 @@ import java.util.List;
 
 public interface IReferenceFunction {
 
-	public abstract List<String> getSynonym();
+	List<String> getSynonym();
 
-	public abstract boolean isDatasetRelatesToProduct();
+	boolean isDatasetRelatesToProduct();
 
-	public abstract void setDatasetRelatesToProduct(boolean value);
+	void setDatasetRelatesToProduct(boolean value);
 
-	public abstract String getName();
+	String getName();
 
-	public abstract void setName(String value);
+	void setName(String value);
 
-	public abstract String getLocalName();
+	String getLocalName();
 
-	public abstract void setLocalName(String value);
+	void setLocalName(String value);
 
-	public abstract boolean isInfrastructureProcess();
+	boolean isInfrastructureProcess();
 
-	public abstract void setInfrastructureProcess(boolean value);
+	void setInfrastructureProcess(boolean value);
 
-	public abstract double getAmount();
+	double getAmount();
 
-	public abstract void setAmount(double value);
+	void setAmount(double value);
 
-	public abstract String getUnit();
+	String getUnit();
 
-	public abstract void setUnit(String value);
+	void setUnit(String value);
 
-	public abstract String getCategory();
+	String getCategory();
 
-	public abstract void setCategory(String value);
+	void setCategory(String value);
 
-	public abstract String getSubCategory();
+	String getSubCategory();
 
-	public abstract void setSubCategory(String value);
+	void setSubCategory(String value);
 
-	public abstract String getLocalCategory();
+	String getLocalCategory();
 
-	public abstract void setLocalCategory(String value);
+	void setLocalCategory(String value);
 
-	public abstract String getLocalSubCategory();
+	String getLocalSubCategory();
 
-	public abstract void setLocalSubCategory(String value);
+	void setLocalSubCategory(String value);
 
-	public abstract String getIncludedProcesses();
+	String getIncludedProcesses();
 
-	public abstract void setIncludedProcesses(String value);
+	void setIncludedProcesses(String value);
 
-	public abstract String getGeneralComment();
+	String getGeneralComment();
 
-	public abstract void setGeneralComment(String value);
+	void setGeneralComment(String value);
 
-	public abstract boolean isInfrastructureIncluded();
+	boolean isInfrastructureIncluded();
 
-	public abstract void setInfrastructureIncluded(Boolean value);
+	void setInfrastructureIncluded(Boolean value);
 
-	public abstract String getCASNumber();
+	String getCASNumber();
 
-	public abstract void setCASNumber(String value);
+	void setCASNumber(String value);
 
-	public abstract Long getStatisticalClassification();
+	Long getStatisticalClassification();
 
-	public abstract void setStatisticalClassification(Long value);
+	void setStatisticalClassification(Long value);
 
-	public abstract String getFormula();
+	String getFormula();
 
-	public abstract void setFormula(String value);
+	void setFormula(String value);
 
 }

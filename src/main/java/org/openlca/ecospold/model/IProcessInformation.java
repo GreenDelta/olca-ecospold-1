@@ -1,31 +1,29 @@
 package org.openlca.ecospold.model;
 
-import org.w3c.dom.Element;
-
 import java.util.List;
 
 public interface IProcessInformation {
 
-	public abstract IReferenceFunction getReferenceFunction();
+	IReferenceFunction getReferenceFunction();
 
-	public abstract void setReferenceFunction(IReferenceFunction value);
+	void setReferenceFunction(IReferenceFunction value);
 
-	public abstract IGeography getGeography();
+	IGeography getGeography();
 
-	public abstract void setGeography(IGeography value);
+	void setGeography(IGeography value);
 
-	public abstract ITechnology getTechnology();
+	ITechnology getTechnology();
 
-	public abstract void setTechnology(ITechnology value);
+	void setTechnology(ITechnology value);
 
-	public abstract ITimePeriod getTimePeriod();
+	ITimePeriod getTimePeriod();
 
-	public abstract void setTimePeriod(ITimePeriod value);
+	void setTimePeriod(ITimePeriod value);
 
-	public abstract IDataSetInformation getDataSetInformation();
+	IDataSetInformation getDataSetInformation();
 
-	public abstract void setDataSetInformation(IDataSetInformation value);
+	void setDataSetInformation(IDataSetInformation value);
 
-	public abstract List<Object> getAny();
+	List<Object> getAny();
 
 }

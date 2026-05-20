@@ -2,16 +2,16 @@ package org.openlca.ecospold.model;
 
 public interface IValidation {
 
-	public abstract String getProofReadingDetails();
+	String getProofReadingDetails();
 
-	public abstract void setProofReadingDetails(String value);
+	void setProofReadingDetails(String value);
 
-	public abstract int getProofReadingValidator();
+	int getProofReadingValidator();
 
-	public abstract void setProofReadingValidator(int value);
+	void setProofReadingValidator(int value);
 
-	public abstract String getOtherDetails();
+	String getOtherDetails();
 
-	public abstract void setOtherDetails(String value);
+	void setOtherDetails(String value);
 
 }

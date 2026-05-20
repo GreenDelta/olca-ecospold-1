@@ -2,8 +2,8 @@ package org.openlca.ecospold.model;
 
 public interface ITechnology {
 
-	public abstract String getText();
+	String getText();
 
-	public abstract void setText(String value);
+	void setText(String value);
 
 }

@@ -5,64 +5,64 @@ import java.math.BigInteger;
 
 public interface ISource {
 
-	public abstract int getNumber();
+	int getNumber();
 
-	public abstract void setNumber(int value);
+	void setNumber(int value);
 
-	public abstract int getSourceType();
+	int getSourceType();
 
-	public abstract void setSourceType(Integer value);
+	void setSourceType(Integer value);
 
-	public abstract String getFirstAuthor();
+	String getFirstAuthor();
 
-	public abstract void setFirstAuthor(String value);
+	void setFirstAuthor(String value);
 
-	public abstract String getAdditionalAuthors();
+	String getAdditionalAuthors();
 
-	public abstract void setAdditionalAuthors(String value);
+	void setAdditionalAuthors(String value);
 
-	public abstract XMLGregorianCalendar getYear();
+	XMLGregorianCalendar getYear();
 
-	public abstract void setYear(XMLGregorianCalendar value);
+	void setYear(XMLGregorianCalendar value);
 
-	public abstract String getTitle();
+	String getTitle();
 
-	public abstract void setTitle(String value);
+	void setTitle(String value);
 
-	public abstract String getPageNumbers();
+	String getPageNumbers();
 
-	public abstract void setPageNumbers(String value);
+	void setPageNumbers(String value);
 
-	public abstract String getNameOfEditors();
+	String getNameOfEditors();
 
-	public abstract void setNameOfEditors(String value);
+	void setNameOfEditors(String value);
 
-	public abstract String getTitleOfAnthology();
+	String getTitleOfAnthology();
 
-	public abstract void setTitleOfAnthology(String value);
+	void setTitleOfAnthology(String value);
 
-	public abstract String getPlaceOfPublications();
+	String getPlaceOfPublications();
 
-	public abstract void setPlaceOfPublications(String value);
+	void setPlaceOfPublications(String value);
 
-	public abstract String getPublisher();
+	String getPublisher();
 
-	public abstract void setPublisher(String value);
+	void setPublisher(String value);
 
-	public abstract String getJournal();
+	String getJournal();
 
-	public abstract void setJournal(String value);
+	void setJournal(String value);
 
-	public abstract BigInteger getVolumeNo();
+	BigInteger getVolumeNo();
 
-	public abstract void setVolumeNo(BigInteger value);
+	void setVolumeNo(BigInteger value);
 
-	public abstract String getIssueNo();
+	String getIssueNo();
 
-	public abstract void setIssueNo(String value);
+	void setIssueNo(String value);
 
-	public abstract String getText();
+	String getText();
 
-	public abstract void setText(String value);
+	void setText(String value);
 
 }

@@ -4,36 +4,36 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 public interface ITimePeriod {
 
-	public abstract XMLGregorianCalendar getStartYear();
+	XMLGregorianCalendar getStartYear();
 
-	public abstract void setStartYear(XMLGregorianCalendar value);
+	void setStartYear(XMLGregorianCalendar value);
 
-	public abstract XMLGregorianCalendar getStartYearMonth();
+	XMLGregorianCalendar getStartYearMonth();
 
-	public abstract void setStartYearMonth(XMLGregorianCalendar value);
+	void setStartYearMonth(XMLGregorianCalendar value);
 
-	public abstract XMLGregorianCalendar getStartDate();
+	XMLGregorianCalendar getStartDate();
 
-	public abstract void setStartDate(XMLGregorianCalendar value);
+	void setStartDate(XMLGregorianCalendar value);
 
-	public abstract XMLGregorianCalendar getEndYear();
+	XMLGregorianCalendar getEndYear();
 
-	public abstract void setEndYear(XMLGregorianCalendar value);
+	void setEndYear(XMLGregorianCalendar value);
 
-	public abstract XMLGregorianCalendar getEndYearMonth();
+	XMLGregorianCalendar getEndYearMonth();
 
-	public abstract void setEndYearMonth(XMLGregorianCalendar value);
+	void setEndYearMonth(XMLGregorianCalendar value);
 
-	public abstract XMLGregorianCalendar getEndDate();
+	XMLGregorianCalendar getEndDate();
 
-	public abstract void setEndDate(XMLGregorianCalendar value);
+	void setEndDate(XMLGregorianCalendar value);
 
-	public abstract boolean isDataValidForEntirePeriod();
+	boolean isDataValidForEntirePeriod();
 
-	public abstract void setDataValidForEntirePeriod(boolean value);
+	void setDataValidForEntirePeriod(boolean value);
 
-	public abstract String getText();
+	String getText();
 
-	public abstract void setText(String value);
+	void setText(String value);
 
 }

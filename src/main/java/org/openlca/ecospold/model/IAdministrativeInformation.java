@@ -1,22 +1,18 @@
 package org.openlca.ecospold.model;
-
-import org.w3c.dom.Element;
-
 import java.util.List;
 
 public interface IAdministrativeInformation {
 
-	public abstract IDataEntryBy getDataEntryBy();
+	IDataEntryBy getDataEntryBy();
 
-	public abstract void setDataEntryBy(IDataEntryBy value);
+	void setDataEntryBy(IDataEntryBy value);
 
-	public abstract IDataGeneratorAndPublication getDataGeneratorAndPublication();
+	IDataGeneratorAndPublication getDataGeneratorAndPublication();
 
-	public abstract void setDataGeneratorAndPublication(
-			IDataGeneratorAndPublication value);
+	void setDataGeneratorAndPublication(IDataGeneratorAndPublication value);
 
-	public abstract List<IPerson> getPersons();
+	List<IPerson> getPersons();
 
-	public abstract List<Object> getAny();
+	List<Object> getAny();
 
 }

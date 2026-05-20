@@ -4,12 +4,12 @@ import java.math.BigInteger;
 
 public interface IDataEntryBy {
 
-	public abstract int getPerson();
+	int getPerson();
 
-	public abstract void setPerson(int value);
+	void setPerson(int value);
 
-	public abstract BigInteger getQualityNetwork();
+	BigInteger getQualityNetwork();
 
-	public abstract void setQualityNetwork(BigInteger value);
+	void setQualityNetwork(BigInteger value);
 
 }

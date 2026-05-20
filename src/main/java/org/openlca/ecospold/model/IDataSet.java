@@ -7,44 +7,44 @@ import java.util.List;
 
 public interface IDataSet {
 
-	public abstract IMetaInformation getMetaInformation();
+	IMetaInformation getMetaInformation();
 
-	public abstract void setMetaInformation(IMetaInformation value);
+	void setMetaInformation(IMetaInformation value);
 
-	public abstract List<IFlowData> getFlowData();
+	List<IFlowData> getFlowData();
 
-	public abstract List<Object> getAny();
+	List<Object> getAny();
 
-	public abstract int getNumber();
+	int getNumber();
 
-	public abstract void setNumber(int value);
+	void setNumber(int value);
 
-	public abstract String getInternalSchemaVersion();
+	String getInternalSchemaVersion();
 
-	public abstract void setInternalSchemaVersion(String value);
+	void setInternalSchemaVersion(String value);
 
-	public abstract String getGenerator();
+	String getGenerator();
 
-	public abstract void setGenerator(String value);
+	void setGenerator(String value);
 
-	public abstract XMLGregorianCalendar getTimestamp();
+	XMLGregorianCalendar getTimestamp();
 
-	public abstract void setTimestamp(XMLGregorianCalendar value);
+	void setTimestamp(XMLGregorianCalendar value);
 
-	public abstract String getValidCompanyCodes();
+	String getValidCompanyCodes();
 
-	public abstract void setValidCompanyCodes(String value);
+	void setValidCompanyCodes(String value);
 
-	public abstract String getValidRegionalCodes();
+	String getValidRegionalCodes();
 
-	public abstract void setValidRegionalCodes(String value);
+	void setValidRegionalCodes(String value);
 
-	public abstract String getValidCategories();
+	String getValidCategories();
 
-	public abstract void setValidCategories(String value);
+	void setValidCategories(String value);
 
-	public abstract String getValidUnits();
+	String getValidUnits();
 
-	public abstract void setValidUnits(String value);
+	void setValidUnits(String value);
 
 }

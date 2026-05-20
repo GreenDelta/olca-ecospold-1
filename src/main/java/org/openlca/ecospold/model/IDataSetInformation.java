@@ -4,36 +4,36 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 public interface IDataSetInformation {
 
-	public abstract int getType();
+	int getType();
 
-	public abstract void setType(int value);
+	void setType(int value);
 
-	public abstract boolean isImpactAssessmentResult();
+	boolean isImpactAssessmentResult();
 
-	public abstract void setImpactAssessmentResult(boolean value);
+	void setImpactAssessmentResult(boolean value);
 
-	public abstract XMLGregorianCalendar getTimestamp();
+	XMLGregorianCalendar getTimestamp();
 
-	public abstract void setTimestamp(XMLGregorianCalendar value);
+	void setTimestamp(XMLGregorianCalendar value);
 
-	public abstract float getVersion();
+	float getVersion();
 
-	public abstract void setVersion(float value);
+	void setVersion(float value);
 
-	public abstract float getInternalVersion();
+	float getInternalVersion();
 
-	public abstract void setInternalVersion(float value);
+	void setInternalVersion(float value);
 
-	public abstract int getEnergyValues();
+	int getEnergyValues();
 
-	public abstract void setEnergyValues(int value);
+	void setEnergyValues(int value);
 
-	public abstract ILanguageCode getLanguageCode();
+	ILanguageCode getLanguageCode();
 
-	public abstract void setLanguageCode(ILanguageCode value);
+	void setLanguageCode(ILanguageCode value);
 
-	public abstract ILanguageCode getLocalLanguageCode();
+	ILanguageCode getLocalLanguageCode();
 
-	public abstract void setLocalLanguageCode(ILanguageCode value);
+	void setLocalLanguageCode(ILanguageCode value);
 
 }

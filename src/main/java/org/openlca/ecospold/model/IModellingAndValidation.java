@@ -1,21 +1,19 @@
 package org.openlca.ecospold.model;
 
-import org.w3c.dom.Element;
-
 import java.util.List;
 
 public interface IModellingAndValidation {
 
-	public abstract IRepresentativeness getRepresentativeness();
+	IRepresentativeness getRepresentativeness();
 
-	public abstract void setRepresentativeness(IRepresentativeness value);
+	void setRepresentativeness(IRepresentativeness value);
 
-	public abstract List<ISource> getSources();
+	List<ISource> getSources();
 
-	public abstract IValidation getValidation();
+	IValidation getValidation();
 
-	public abstract void setValidation(IValidation value);
+	void setValidation(IValidation value);
 
-	public abstract List<Object> getAny();
+	List<Object> getAny();
 
 }
