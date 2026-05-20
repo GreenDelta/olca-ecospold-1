@@ -31,7 +31,7 @@ public class ImpactEcoSpold implements Serializable, IEcoSpold {
 	protected String validationStatus;
 
 	@Override
-	public List<IDataSet> getDataset() {
+	public List<IDataSet> getDataSets() {
 		if (dataset == null) {
 			dataset = new ArrayList<>();
 		}

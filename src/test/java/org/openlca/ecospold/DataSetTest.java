@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.openlca.ecospold.model.DataSet;
 
 public class DataSetTest {
 
@@ -31,7 +32,7 @@ public class DataSetTest {
 				var reloaded = EcoSpold.read(roundTrip, DataSetType.PROCESS)
 					.orElseThrow();
 				return new DataSet(
-					reloaded.getDataset().getFirst(),
+					reloaded.getDataSets().getFirst(),
 					DataSetType.PROCESS.getFactory());
 			}
 		}

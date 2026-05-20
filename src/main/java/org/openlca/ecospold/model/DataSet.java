@@ -1,25 +1,4 @@
-package org.openlca.ecospold;
-
-import org.openlca.ecospold.model.IAdministrativeInformation;
-import org.openlca.ecospold.model.IAllocation;
-import org.openlca.ecospold.model.IDataEntryBy;
-import org.openlca.ecospold.model.IDataGeneratorAndPublication;
-import org.openlca.ecospold.model.IDataSet;
-import org.openlca.ecospold.model.IDataSetInformation;
-import org.openlca.ecospold.model.IEcoSpoldFactory;
-import org.openlca.ecospold.model.IExchange;
-import org.openlca.ecospold.model.IFlowData;
-import org.openlca.ecospold.model.IGeography;
-import org.openlca.ecospold.model.IMetaInformation;
-import org.openlca.ecospold.model.IModellingAndValidation;
-import org.openlca.ecospold.model.IPerson;
-import org.openlca.ecospold.model.IProcessInformation;
-import org.openlca.ecospold.model.IReferenceFunction;
-import org.openlca.ecospold.model.IRepresentativeness;
-import org.openlca.ecospold.model.ISource;
-import org.openlca.ecospold.model.ITechnology;
-import org.openlca.ecospold.model.ITimePeriod;
-import org.openlca.ecospold.model.IValidation;
+package org.openlca.ecospold.model;
 
 import java.util.Collections;
 import java.util.List;

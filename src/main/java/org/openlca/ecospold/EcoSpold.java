@@ -29,6 +29,14 @@ public class EcoSpold {
 	private static final HashMap<Class<?>, Marshaller> marshallers = new HashMap<>();
 	private static final HashMap<Class<?>, Unmarshaller> unmarshallers = new HashMap<>();
 
+	public static IEcoSpold newProcess() {
+		return new ProcessEcoSpold();
+	}
+
+	public static IEcoSpold newImpactMethod() {
+		return new ImpactEcoSpold();
+	}
+
 	/**
 	 * Tries to detect the EcoSpold data set type from the given file. If this
 	 * fails, an empty Optional is returned.

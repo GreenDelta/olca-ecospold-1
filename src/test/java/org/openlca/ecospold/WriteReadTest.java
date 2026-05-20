@@ -3,7 +3,7 @@ package org.openlca.ecospold;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.openlca.ecospold.model.IEcoSpoldFactory;
+import org.openlca.ecospold.model.IEcoSpold;
 
 import java.nio.file.Files;
 
@@ -11,20 +11,17 @@ public class WriteReadTest {
 
 	@Test
 	public void testProcess() throws Exception {
-		with(DataSetType.PROCESS.getFactory());
+		with(EcoSpold.newProcess());
 	}
 
 	@Test
 	public void testImpactMethod() throws Exception {
-		with(DataSetType.IMPACT_METHOD.getFactory());
+		with(EcoSpold.newImpactMethod());
 	}
 
-	private void with(IEcoSpoldFactory factory) throws Exception {
-		var ds = factory.createDataSet();
-		var wrapper = new DataSet(ds, factory);
-		wrapper.withReferenceFunction().setName("a test");
-		var spold = factory.createEcoSpold();
-		spold.getDataset().add(ds);
+	private void with(IEcoSpold spold) throws Exception {
+		var ds = spold.newDataSet();
+		ds.withReferenceFunction().setName("a test");
 
 		var file = Files.createTempFile(
 			"_olca_test", ".xml").toFile();
@@ -32,7 +29,7 @@ public class WriteReadTest {
 
 		var name = EcoSpold.read(file)
 			.orElseThrow()
-			.getDataset()
+			.getDataSets()
 			.getFirst()
 			.getMetaInformation()
 			.getProcessInformation()
