@@ -14,8 +14,8 @@ import javax.xml.stream.XMLStreamReader;
 
 import org.openlca.commons.Res;
 import org.openlca.ecospold.model.IEcoSpold;
-import org.openlca.ecospold.model.internal.impact.ImpactXmlBinder;
-import org.openlca.ecospold.model.internal.process.ProcessXmlBinder;
+import org.openlca.ecospold.model.impact.ImpactXmlBinder;
+import org.openlca.ecospold.model.process.ProcessXmlBinder;
 
 public class EcoSpold {
 

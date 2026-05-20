@@ -1,8 +1,8 @@
 package org.openlca.ecospold;
 
 import org.openlca.ecospold.model.IEcoSpoldFactory;
-import org.openlca.ecospold.model.internal.impact.ImpactMethodFactory;
-import org.openlca.ecospold.model.internal.process.ProcessFactory;
+import org.openlca.ecospold.model.impact.ImpactMethodFactory;
+import org.openlca.ecospold.model.process.ProcessFactory;
 
 public enum DataSetType {
 
