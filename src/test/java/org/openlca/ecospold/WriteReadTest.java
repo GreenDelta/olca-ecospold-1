@@ -24,9 +24,7 @@ public class WriteReadTest {
 	private void with(IEcoSpoldFactory factory) throws Exception {
 		var ds = factory.createDataSet();
 		var wrapper = new DataSet(ds, factory);
-		var ref = factory.createReferenceFunction();
-		ref.setName("a test");
-		wrapper.setReferenceFunction(ref);
+		wrapper.withReferenceFunction().setName("a test");
 		var spold = factory.createEcoSpold();
 		spold.getDataset().add(ds);
 
