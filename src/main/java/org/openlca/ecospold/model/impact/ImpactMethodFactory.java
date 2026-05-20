@@ -26,106 +26,106 @@ import org.openlca.ecospold.model.IValidation;
 
 public class ImpactMethodFactory implements IEcoSpoldFactory {
 
-	private ObjectFactory objectFactory = new ObjectFactory();
+	private final ObjectFactory f = new ObjectFactory();
 
 	@Override
 	public IEcoSpold createEcoSpold() {
-		return objectFactory.createImpactEcoSpold();
+		return f.createImpactEcoSpold();
 	}
 
 	@Override
 	public IDataEntryBy createDataEntryBy() {
-		return objectFactory.createImpactDataEntryBy();
+		return f.createImpactDataEntryBy();
 	}
 
 	@Override
 	public IModellingAndValidation createModellingAndValidation() {
-		return objectFactory.createImpactModellingAndValidation();
+		return f.createImpactModellingAndValidation();
 	}
 
 	@Override
 	public IAllocation createAllocation() {
-		return objectFactory.createImpactAllocation();
+		return f.createImpactAllocation();
 	}
 
 	@Override
 	public ITechnology createTechnology() {
-		return objectFactory.createImpactTechnology();
+		return f.createImpactTechnology();
 	}
 
 	@Override
 	public IPerson createPerson() {
-		return objectFactory.createImpactPerson();
+		return f.createImpactPerson();
 	}
 
 	@Override
 	public IExchange createExchange() {
-		return objectFactory.createImpactFactor();
+		return f.createImpactFactor();
 	}
 
 	@Override
 	public IReferenceFunction createReferenceFunction() {
-		return objectFactory.createImpactReferenceFunction();
+		return f.createImpactReferenceFunction();
 	}
 
 	@Override
 	public IProcessInformation createProcessInformation() {
-		return objectFactory.createImpactProcessInformation();
+		return f.createImpactProcessInformation();
 	}
 
 	@Override
 	public IValidation createValidation() {
-		return objectFactory.createImpactValidation();
+		return f.createImpactValidation();
 	}
 
 	@Override
 	public IAdministrativeInformation createAdministrativeInformation() {
-		return objectFactory.createImpactAdministrativeInformation();
+		return f.createImpactAdministrativeInformation();
 	}
 
 	@Override
 	public IDataGeneratorAndPublication createDataGeneratorAndPublication() {
-		return objectFactory.createImpactDataGeneratorAndPublication();
+		return f.createImpactDataGeneratorAndPublication();
 	}
 
 	@Override
 	public IDataSet createDataSet() {
-		return objectFactory.createImpactDataSet();
+		return f.createImpactDataSet();
 	}
 
 	@Override
 	public IDataSetInformation createDataSetInformation() {
-		return objectFactory.createImpactDataSetInformation();
+		return f.createImpactDataSetInformation();
 	}
 
 	@Override
 	public ISource createSource() {
-		return objectFactory.createImpactSource();
+		return f.createImpactSource();
 	}
 
 	@Override
 	public IMetaInformation createMetaInformation() {
-		return objectFactory.createImpactMetaInformation();
+		return f.createImpactMetaInformation();
 	}
 
 	@Override
 	public ITimePeriod createTimePeriod() {
-		return objectFactory.createImpactTimePeriod();
+		return f.createImpactTimePeriod();
 	}
 
 	@Override
 	public IRepresentativeness createRepresentativeness() {
-		return objectFactory.createImpactRepresentativeness();
+		return f.createImpactRepresentativeness();
 	}
 
 	@Override
 	public IGeography createGeography() {
-		return objectFactory.createImpactGeography();
+		return f.createImpactGeography();
 	}
 
 	@Override
 	public IFlowData createFlowData() {
-		return objectFactory.createImpactFactors();
+		return f.createImpactFactors();
 	}
 
 	@Override

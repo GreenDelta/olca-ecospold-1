@@ -10,6 +10,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 import org.openlca.ecospold.model.IDataSet;
 import org.openlca.ecospold.model.IEcoSpold;
+import org.openlca.ecospold.model.IEcoSpoldFactory;
 
 import java.io.Serializable;
 import java.math.BigInteger;

@@ -6,13 +6,13 @@ import org.openlca.ecospold.model.process.ProcessFactory;
 
 public enum DataSetType {
 
-	PROCESS("http://www.EcoInvent.org/EcoSpold01", new ProcessFactory()),
+	PROCESS(
+		"http://www.EcoInvent.org/EcoSpold01", new ProcessFactory()),
 
-	IMPACT_METHOD("http://www.EcoInvent.org/EcoSpold01Impact",
-			new ImpactMethodFactory());
+	IMPACT_METHOD(
+		"http://www.EcoInvent.org/EcoSpold01Impact", new ImpactMethodFactory());
 
 	private final String namespace;
-
 	private final IEcoSpoldFactory factory;
 
 	public IEcoSpoldFactory getFactory() {
@@ -32,5 +32,4 @@ public enum DataSetType {
 		}
 		return null;
 	}
-
 }

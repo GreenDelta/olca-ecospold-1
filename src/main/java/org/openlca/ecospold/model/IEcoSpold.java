@@ -3,6 +3,8 @@ package org.openlca.ecospold.model;
 import java.math.BigInteger;
 import java.util.List;
 
+import org.openlca.ecospold.DataSet;
+
 import jakarta.xml.bind.JAXBElement;
 
 public interface IEcoSpold {
@@ -20,5 +22,4 @@ public interface IEcoSpold {
 	void setValidationStatus(String value);
 
 	JAXBElement<?> toElement();
-
 }

@@ -38,24 +38,24 @@ import java.util.Objects;
 /// list can be modified directly.
 public class DataSet {
 
-	private final IDataSet raw;
+	private final IDataSet root;
 	private final IEcoSpoldFactory factory;
 
-	public DataSet(IDataSet raw, IEcoSpoldFactory factory) {
-		this.raw = Objects.requireNonNull(raw);
+	public DataSet(IDataSet root, IEcoSpoldFactory factory) {
+		this.root = Objects.requireNonNull(root);
 		this.factory = Objects.requireNonNull(factory);
 	}
 
-	/// Returns the underlying raw dataset of this wrapper.
-	public IDataSet raw() {
-		return raw;
+	/// Returns the root of the underlying raw dataset of this wrapper.
+	public IDataSet root() {
+		return root;
 	}
 
 	public IMetaInformation withMetaInformation() {
-		if (raw.getMetaInformation() == null) {
-			raw.setMetaInformation(factory.createMetaInformation());
+		if (root.getMetaInformation() == null) {
+			root.setMetaInformation(factory.createMetaInformation());
 		}
-		return raw.getMetaInformation();
+		return root.getMetaInformation();
 	}
 
 	private IAdministrativeInformation withAdministrativeInformation() {
@@ -86,21 +86,21 @@ public class DataSet {
 	}
 
 	private IAdministrativeInformation getAdministrativeInformation() {
-		var metaInfo = raw.getMetaInformation();
+		var metaInfo = root.getMetaInformation();
 		return metaInfo != null
 			? metaInfo.getAdministrativeInformation()
 			: null;
 	}
 
 	private IModellingAndValidation getModellingAndValidation() {
-		var metaInfo = raw.getMetaInformation();
+		var metaInfo = root.getMetaInformation();
 		return metaInfo != null
 			? metaInfo.getModellingAndValidation()
 			: null;
 	}
 
 	private IProcessInformation getProcessInformation() {
-		var metaInfo = raw.getMetaInformation();
+		var metaInfo = root.getMetaInformation();
 		return metaInfo != null
 			? metaInfo.getProcessInformation()
 			: null;
@@ -153,8 +153,8 @@ public class DataSet {
 	}
 
 	private IFlowData getFlowData() {
-		return !raw.getFlowData().isEmpty()
-			? raw.getFlowData().getFirst()
+		return !root.getFlowData().isEmpty()
+			? root.getFlowData().getFirst()
 			: null;
 	}
 
@@ -163,7 +163,7 @@ public class DataSet {
 		if (flowData != null)
 			return flowData;
 		flowData = factory.createFlowData();
-		raw.getFlowData().add(flowData);
+		root.getFlowData().add(flowData);
 		return flowData;
 	}
 

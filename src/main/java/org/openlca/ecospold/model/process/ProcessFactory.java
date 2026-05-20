@@ -26,108 +26,106 @@ import org.openlca.ecospold.model.IValidation;
 
 public class ProcessFactory implements IEcoSpoldFactory {
 
-	private ObjectFactory objectFactory = new ObjectFactory();
-
-	public final static ProcessFactory INSTANCE = new ProcessFactory();
+	private final ObjectFactory f = new ObjectFactory();
 
 	@Override
 	public IEcoSpold createEcoSpold() {
-		return objectFactory.createEcoSpold();
+		return f.createEcoSpold();
 	}
 
 	@Override
 	public IDataEntryBy createDataEntryBy() {
-		return objectFactory.createDataEntryBy();
+		return f.createDataEntryBy();
 	}
 
 	@Override
 	public IModellingAndValidation createModellingAndValidation() {
-		return objectFactory.createModellingAndValidation();
+		return f.createModellingAndValidation();
 	}
 
 	@Override
 	public IAllocation createAllocation() {
-		return objectFactory.createAllocation();
+		return f.createAllocation();
 	}
 
 	@Override
 	public ITechnology createTechnology() {
-		return objectFactory.createTechnology();
+		return f.createTechnology();
 	}
 
 	@Override
 	public IPerson createPerson() {
-		return objectFactory.createPerson();
+		return f.createPerson();
 	}
 
 	@Override
 	public IExchange createExchange() {
-		return objectFactory.createExchange();
+		return f.createExchange();
 	}
 
 	@Override
 	public IReferenceFunction createReferenceFunction() {
-		return objectFactory.createReferenceFunction();
+		return f.createReferenceFunction();
 	}
 
 	@Override
 	public IProcessInformation createProcessInformation() {
-		return objectFactory.createProcessInformation();
+		return f.createProcessInformation();
 	}
 
 	@Override
 	public IValidation createValidation() {
-		return objectFactory.createValidation();
+		return f.createValidation();
 	}
 
 	@Override
 	public IAdministrativeInformation createAdministrativeInformation() {
-		return objectFactory.createAdministrativeInformation();
+		return f.createAdministrativeInformation();
 	}
 
 	@Override
 	public IDataGeneratorAndPublication createDataGeneratorAndPublication() {
-		return objectFactory.createDataGeneratorAndPublication();
+		return f.createDataGeneratorAndPublication();
 	}
 
 	@Override
 	public IDataSet createDataSet() {
-		return objectFactory.createDataSet();
+		return f.createDataSet();
 	}
 
 	@Override
 	public IDataSetInformation createDataSetInformation() {
-		return objectFactory.createDataSetInformation();
+		return f.createDataSetInformation();
 	}
 
 	@Override
 	public ISource createSource() {
-		return objectFactory.createSource();
+		return f.createSource();
 	}
 
 	@Override
 	public IMetaInformation createMetaInformation() {
-		return objectFactory.createMetaInformation();
+		return f.createMetaInformation();
 	}
 
 	@Override
 	public ITimePeriod createTimePeriod() {
-		return objectFactory.createTimePeriod();
+		return f.createTimePeriod();
 	}
 
 	@Override
 	public IRepresentativeness createRepresentativeness() {
-		return objectFactory.createRepresentativeness();
+		return f.createRepresentativeness();
 	}
 
 	@Override
 	public IGeography createGeography() {
-		return objectFactory.createGeography();
+		return f.createGeography();
 	}
 
 	@Override
 	public IFlowData createFlowData() {
-		return objectFactory.createFlowData();
+		return f.createFlowData();
 	}
 
 	@Override
