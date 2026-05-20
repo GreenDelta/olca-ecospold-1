@@ -1,5 +1,6 @@
 package org.openlca.ecospold.model.impact;
 
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyElement;
@@ -64,4 +65,8 @@ public class ImpactEcoSpold implements Serializable, IEcoSpold {
 		this.validationStatus = value;
 	}
 
+	@Override
+	public JAXBElement<?> toElement() {
+		return new ObjectFactory().createEcoSpold(this);
+	}
 }

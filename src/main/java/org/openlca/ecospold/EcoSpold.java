@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.Objects;
 
 import javax.xml.stream.XMLInputFactory;
@@ -14,13 +15,19 @@ import javax.xml.stream.XMLStreamReader;
 
 import org.openlca.commons.Res;
 import org.openlca.ecospold.model.IEcoSpold;
-import org.openlca.ecospold.model.impact.ImpactXmlBinder;
-import org.openlca.ecospold.model.process.ProcessXmlBinder;
+import org.openlca.ecospold.model.impact.ImpactEcoSpold;
+import org.openlca.ecospold.model.process.ProcessEcoSpold;
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
 
 public class EcoSpold {
 
-	private static final EcoSpoldXmlBinder<?> processXmlBinder = new ProcessXmlBinder();
-	private static final EcoSpoldXmlBinder<?> impactMethodXmlBinder = new ImpactXmlBinder();
+	private static final HashMap<Class<?>, Marshaller> marshallers = new HashMap<>();
+	private static final HashMap<Class<?>, Unmarshaller> unmarshallers = new HashMap<>();
 
 	/**
 	 * Tries to detect the EcoSpold data set type from the given file. If this
@@ -28,7 +35,7 @@ public class EcoSpold {
 	 */
 	public static Res<DataSetType> typeOf(File file) {
 		try (var stream = new FileInputStream(file);
-				 var buff = new BufferedInputStream(stream)) {
+		     var buff = new BufferedInputStream(stream)) {
 			var type = typeOf(buff);
 			return type.isError()
 				? type.wrapError("Failed to detect dataset type of file: " + file)
@@ -72,8 +79,8 @@ public class EcoSpold {
 
 	public static Res<IEcoSpold> read(File file, DataSetType type) {
 		try (var stream = new FileInputStream(file);
-				 var buffer = new BufferedInputStream(stream)) {
-			var res =  read(buffer, type);
+		     var buffer = new BufferedInputStream(stream)) {
+			var res = read(buffer, type);
 			return res.isError()
 				? res.wrapError("Failed to read EcoSpold document from file: " + file)
 				: res;
@@ -85,8 +92,8 @@ public class EcoSpold {
 	public static Res<IEcoSpold> read(InputStream stream, DataSetType type) {
 		try {
 			return switch (type) {
-				case PROCESS -> Res.ok(processXmlBinder.unmarshal(stream));
-				case IMPACT_METHOD -> Res.ok(impactMethodXmlBinder.unmarshal(stream));
+				case PROCESS -> Res.ok(unmarshal(ProcessEcoSpold.class, stream));
+				case IMPACT_METHOD -> Res.ok(unmarshal(ImpactEcoSpold.class, stream));
 				case null -> Res.error("No dataset type of EcoSpold document provided");
 			};
 		} catch (Exception e) {
@@ -96,7 +103,7 @@ public class EcoSpold {
 
 	public static Res<Void> write(File file, IEcoSpold spold) {
 		try (var stream = new FileOutputStream(file);
-				 var buffer = new BufferedOutputStream(stream)) {
+		     var buffer = new BufferedOutputStream(stream)) {
 			var res = write(buffer, spold);
 			return res.isError()
 				? res.wrapError("Failed to write EcoSpold to file: " + file)
@@ -108,14 +115,40 @@ public class EcoSpold {
 
 	public static Res<Void> write(OutputStream stream, IEcoSpold spold) {
 		try {
-			if (processXmlBinder.matches(spold)) {
-				processXmlBinder.marshal(spold, stream);
-			} else if (impactMethodXmlBinder.matches(spold)) {
-				impactMethodXmlBinder.marshal(spold, stream);
-			}
+			getMarshaller(spold).marshal(spold.toElement(), stream);
 			return Res.ok();
 		} catch (Exception e) {
 			return Res.error("Failed to write EcoSpold document", e);
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private static <T extends IEcoSpold> T unmarshal(
+		Class<T> cls, InputStream stream
+	) throws JAXBException {
+		var element = (JAXBElement<T>) getUnmarshaller(cls).unmarshal(stream);
+		return element.getValue();
+	}
+
+	private static Marshaller getMarshaller(Object object) throws JAXBException {
+		Class<?> clazz = object.getClass();
+		var marshaller = marshallers.get(clazz);
+		if (marshaller != null)
+			return marshaller;
+		var context = JAXBContext.newInstance(object.getClass());
+		marshaller = context.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		marshallers.put(clazz, marshaller);
+		return marshaller;
+	}
+
+	private static Unmarshaller getUnmarshaller(Class<?> clazz) throws JAXBException {
+		var unmarshaller = unmarshallers.get(clazz);
+		if (unmarshaller != null)
+			return unmarshaller;
+		var context = JAXBContext.newInstance(clazz);
+		unmarshaller = context.createUnmarshaller();
+		unmarshallers.put(clazz, unmarshaller);
+		return unmarshaller;
 	}
 }

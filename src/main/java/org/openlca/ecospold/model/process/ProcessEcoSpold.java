@@ -1,11 +1,13 @@
 package org.openlca.ecospold.model.process;
 
+import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyElement;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+
 import org.openlca.ecospold.model.IDataSet;
 import org.openlca.ecospold.model.IEcoSpold;
 
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TEcoSpold", propOrder = { "dataset", "any" })
+@XmlType(name = "TEcoSpold", propOrder = {"dataset", "any"})
 public class ProcessEcoSpold implements Serializable, IEcoSpold {
 
 	private final static long serialVersionUID = 1L;
@@ -64,4 +66,8 @@ public class ProcessEcoSpold implements Serializable, IEcoSpold {
 		this.validationStatus = value;
 	}
 
+	@Override
+	public JAXBElement<?> toElement() {
+		return new ObjectFactory().createEcoSpold(this);
+	}
 }
