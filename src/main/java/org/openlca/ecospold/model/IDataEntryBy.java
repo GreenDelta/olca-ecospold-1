@@ -1,15 +1,13 @@
 package org.openlca.ecospold.model;
 
-import java.math.BigInteger;
-
 public interface IDataEntryBy {
 
 	int getPerson();
 
 	void setPerson(int value);
 
-	BigInteger getQualityNetwork();
+	Long getQualityNetwork();
 
-	void setQualityNetwork(BigInteger value);
+	void setQualityNetwork(Long value);
 
 }

@@ -8,7 +8,6 @@ import jakarta.xml.bind.annotation.XmlType;
 import org.openlca.ecospold.model.IDataEntryBy;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TDataEntryBy")
@@ -20,7 +19,7 @@ class ImpactDataEntryBy
     @XmlAttribute(name = "person", required = true)
     protected int person;
     @XmlAttribute(name = "qualityNetwork")
-    protected BigInteger qualityNetwork;
+    protected Long qualityNetwork;
 
     @Override
 	public int getPerson() {
@@ -33,12 +32,12 @@ class ImpactDataEntryBy
     }
 
     @Override
-	public BigInteger getQualityNetwork() {
+	public Long getQualityNetwork() {
         return qualityNetwork;
     }
 
     @Override
-	public void setQualityNetwork(BigInteger value) {
+	public void setQualityNetwork(Long value) {
         this.qualityNetwork = value;
     }
 

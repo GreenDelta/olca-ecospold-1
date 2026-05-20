@@ -12,7 +12,6 @@ import org.openlca.ecospold.model.IEcoSpold;
 import org.openlca.ecospold.model.IEcoSpoldFactory;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class ImpactEcoSpold implements Serializable, IEcoSpold {
 	@XmlAnyElement(lax = true)
 	protected List<Object> any;
 	@XmlAttribute(name = "validationId")
-	protected BigInteger validationId;
+	protected Long validationId;
 	@XmlAttribute(name = "validationStatus")
 	protected String validationStatus;
 
@@ -47,12 +46,12 @@ public class ImpactEcoSpold implements Serializable, IEcoSpold {
 	}
 
 	@Override
-	public BigInteger getValidationId() {
+	public Long getValidationId() {
 		return validationId;
 	}
 
 	@Override
-	public void setValidationId(BigInteger value) {
+	public void setValidationId(Long value) {
 		this.validationId = value;
 	}
 

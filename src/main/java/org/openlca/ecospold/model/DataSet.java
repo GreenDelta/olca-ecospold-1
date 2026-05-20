@@ -30,6 +30,10 @@ public class DataSet {
 		return root;
 	}
 
+	public IEcoSpoldFactory factory() {
+		return factory;
+	}
+
 	public IMetaInformation withMetaInformation() {
 		if (root.getMetaInformation() == null) {
 			root.setMetaInformation(factory.createMetaInformation());

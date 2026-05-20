@@ -1,7 +1,6 @@
 package org.openlca.ecospold.model;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.math.BigInteger;
 
 public interface ISource {
 
@@ -53,9 +52,9 @@ public interface ISource {
 
 	void setJournal(String value);
 
-	BigInteger getVolumeNo();
+	Long getVolumeNo();
 
-	void setVolumeNo(BigInteger value);
+	void setVolumeNo(Long value);
 
 	String getIssueNo();
 

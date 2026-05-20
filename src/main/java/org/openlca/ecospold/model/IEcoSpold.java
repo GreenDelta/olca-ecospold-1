@@ -1,6 +1,5 @@
 package org.openlca.ecospold.model;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import org.openlca.ecospold.model.impact.ImpactMethodFactory;
@@ -15,9 +14,9 @@ public interface IEcoSpold {
 
 	List<Object> getAny();
 
-	BigInteger getValidationId();
+	Long getValidationId();
 
-	void setValidationId(BigInteger value);
+	void setValidationId(Long value);
 
 	String getValidationStatus();
 

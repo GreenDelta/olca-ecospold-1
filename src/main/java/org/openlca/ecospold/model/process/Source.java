@@ -9,7 +9,6 @@ import org.openlca.ecospold.model.ISource;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.Serializable;
-import java.math.BigInteger;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TSource")
@@ -42,7 +41,7 @@ class Source implements Serializable, ISource {
 	@XmlAttribute(name = "journal")
 	protected String journal;
 	@XmlAttribute(name = "volumeNo")
-	protected BigInteger volumeNo;
+	protected Long volumeNo;
 	@XmlAttribute(name = "issueNo")
 	protected String issueNo;
 	@XmlAttribute(name = "text")
@@ -171,12 +170,12 @@ class Source implements Serializable, ISource {
 	}
 
 	@Override
-	public BigInteger getVolumeNo() {
+	public Long getVolumeNo() {
 		return volumeNo;
 	}
 
 	@Override
-	public void setVolumeNo(BigInteger value) {
+	public void setVolumeNo(Long value) {
 		this.volumeNo = value;
 	}
 
