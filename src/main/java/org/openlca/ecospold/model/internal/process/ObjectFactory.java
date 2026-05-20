@@ -32,11 +32,11 @@ class ObjectFactory {
 	}
 
 	/**
-	 * Create an instance of {@link EcoSpold }
+	 * Create an instance of {@link ProcessEcoSpold }
 	 *
 	 */
-	public EcoSpold createEcoSpold() {
-		return new EcoSpold();
+	public ProcessEcoSpold createEcoSpold() {
+		return new ProcessEcoSpold();
 	}
 
 	/**
@@ -192,13 +192,13 @@ class ObjectFactory {
 	}
 
 	/**
-	 * Create an instance of {@link JAXBElement }{@code <}{@link EcoSpold }
+	 * Create an instance of {@link JAXBElement }{@code <}{@link ProcessEcoSpold }
 	 * {@code >}
 	 *
 	 */
 	@XmlElementDecl(namespace = "http://www.EcoInvent.org/EcoSpold01", name = "ecoSpold")
-	public JAXBElement<EcoSpold> createEcoSpold(EcoSpold value) {
-		return new JAXBElement<>(_EcoSpold_QNAME, EcoSpold.class, null, value);
+	public JAXBElement<ProcessEcoSpold> createEcoSpold(ProcessEcoSpold value) {
+		return new JAXBElement<>(_EcoSpold_QNAME, ProcessEcoSpold.class, null, value);
 	}
 
 }

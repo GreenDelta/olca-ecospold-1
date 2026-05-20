@@ -32,19 +32,24 @@ import java.util.Objects;
  */
 public class DataSet {
 
-	private final IDataSet ds;
+	private final IDataSet raw;
 	private final IEcoSpoldFactory factory;
 
-	public DataSet(IDataSet ds, IEcoSpoldFactory factory) {
-		this.ds = Objects.requireNonNull(ds);
+	public DataSet(IDataSet raw, IEcoSpoldFactory factory) {
+		this.raw = Objects.requireNonNull(raw);
 		this.factory = Objects.requireNonNull(factory);
 	}
 
+	/// Returns the underlying raw dataset of this wrapper.
+	public IDataSet raw() {
+		return raw;
+	}
+
 	public IMetaInformation withMetaInformation() {
-		if (ds.getMetaInformation() == null) {
-			ds.setMetaInformation(factory.createMetaInformation());
+		if (raw.getMetaInformation() == null) {
+			raw.setMetaInformation(factory.createMetaInformation());
 		}
-		return ds.getMetaInformation();
+		return raw.getMetaInformation();
 	}
 
 	private IAdministrativeInformation withAdministrativeInformation() {
@@ -75,21 +80,21 @@ public class DataSet {
 	}
 
 	private IAdministrativeInformation getAdministrativeInformation() {
-		var metaInfo = ds.getMetaInformation();
+		var metaInfo = raw.getMetaInformation();
 		return metaInfo != null
 			? metaInfo.getAdministrativeInformation()
 			: null;
 	}
 
 	private IModellingAndValidation getModellingAndValidation() {
-		var metaInfo = ds.getMetaInformation();
+		var metaInfo = raw.getMetaInformation();
 		return metaInfo != null
 			? metaInfo.getModellingAndValidation()
 			: null;
 	}
 
 	private IProcessInformation getProcessInformation() {
-		var metaInfo = ds.getMetaInformation();
+		var metaInfo = raw.getMetaInformation();
 		return metaInfo != null
 			? metaInfo.getProcessInformation()
 			: null;
@@ -103,7 +108,7 @@ public class DataSet {
 	}
 
 	public IDataEntryBy withDataEntryBy() {
-		var adminInfo =	withAdministrativeInformation();
+		var adminInfo = withAdministrativeInformation();
 		if (adminInfo.getDataEntryBy() == null) {
 			adminInfo.setDataEntryBy(factory.createDataEntryBy());
 		}
@@ -142,8 +147,8 @@ public class DataSet {
 	}
 
 	private IFlowData getFlowData() {
-		return !ds.getFlowData().isEmpty()
-			? ds.getFlowData().getFirst()
+		return !raw.getFlowData().isEmpty()
+			? raw.getFlowData().getFirst()
 			: null;
 	}
 
@@ -152,7 +157,7 @@ public class DataSet {
 		if (flowData != null)
 			return flowData;
 		flowData = factory.createFlowData();
-		ds.getFlowData().add(flowData);
+		raw.getFlowData().add(flowData);
 		return flowData;
 	}
 

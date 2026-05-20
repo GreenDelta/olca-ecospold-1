@@ -44,7 +44,7 @@ import java.util.List;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TEcoSpold", propOrder = { "dataset", "any" })
-class EcoSpold implements Serializable, IEcoSpold {
+public class ProcessEcoSpold implements Serializable, IEcoSpold {
 
 	private final static long serialVersionUID = 1L;
 	@XmlElement(required = true, type = DataSet.class)
