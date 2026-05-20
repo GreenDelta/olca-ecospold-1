@@ -25,11 +25,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * An adapter class for EcoSpold 01 data sets which provides an easy access to
- * internal elements of data sets and ensures that 'path' elements are created
- * when such internal elements are set.
- */
+/// Wraps a single EcoSpold data set instance and provides convenient access
+/// to its nested structures.
+///
+/// The `get*` methods are query methods for reading the wrapped data set. They
+/// do not create missing structures. Depending on the requested element, they
+/// can therefore return `null` or an empty immutable list when the respective
+/// path is not present in the wrapped data set.
+///
+/// The `with*` methods are intended for writing data sets. They create the
+/// required path and target structure on demand, so that the returned object or
+/// list can be modified directly.
 public class DataSet {
 
 	private final IDataSet raw;
@@ -241,10 +247,6 @@ public class DataSet {
 		return modVal.getRepresentativeness();
 	}
 
-	/**
-	 * Returns the sources under modelling and validation. The returned list is
-	 * guaranteed to be never NULL.
-	 */
 	public List<ISource> getSources() {
 		var modVal = getModellingAndValidation();
 		return modVal != null

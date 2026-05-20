@@ -10,27 +10,6 @@ import org.openlca.ecospold.model.IDataEntryBy;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-
-/**
- * Contains information about the person that entered data in the database or transformed data into the format of the ecoinvent (or any other) quality network.
- *
- * <p>Java class for TDataEntryBy complex type.
- *
- * <p>The following schema fragment specifies the expected content contained within this class.
- *
- * <pre>
- * &lt;complexType name="TDataEntryBy">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="person" use="required" type="{http://www.EcoInvent.org/EcoSpold01}TIndexNumber" />
- *       &lt;attribute name="qualityNetwork" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- *
- *
- */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TDataEntryBy")
 class DataEntryBy
@@ -43,45 +22,21 @@ class DataEntryBy
     @XmlAttribute(name = "qualityNetwork")
     protected BigInteger qualityNetwork;
 
-    /**
-     * Gets the value of the person property.
-     *
-     */
     @Override
 	public int getPerson() {
         return person;
     }
 
-    /**
-     * Sets the value of the person property.
-     *
-     */
     @Override
 	public void setPerson(int value) {
         this.person = value;
     }
 
-    /**
-     * Gets the value of the qualityNetwork property.
-     *
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *
-     */
     @Override
 	public BigInteger getQualityNetwork() {
         return qualityNetwork;
     }
 
-    /**
-     * Sets the value of the qualityNetwork property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *
-     */
     @Override
 	public void setQualityNetwork(BigInteger value) {
         this.qualityNetwork = value;
