@@ -4,6 +4,7 @@ import org.openlca.ecospold.*;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * An adapter class for EcoSpold 01 data sets which provides an easy access to
@@ -12,16 +13,18 @@ import java.util.List;
  */
 public class DataSet {
 
-	private final IDataSet dataSet;
+	private final IDataSet ds;
 	private final IEcoSpoldFactory factory;
 
-	public DataSet(IDataSet dataSet, IEcoSpoldFactory factory) {
-		this.dataSet = dataSet;
-		this.factory = factory;
-		if (dataSet.getFlowData().size() > 1)
+	public DataSet(IDataSet ds, IEcoSpoldFactory factory) {
+		this.ds = Objects.requireNonNull(ds);
+		this.factory = Objects.requireNonNull(factory);
+		if (ds.getFlowData().size() > 1) {
 			aggregateFlowData();
-		if (dataSet.getFlowData().size() == 0)
-			dataSet.getFlowData().add(factory.createFlowData());
+		}
+		if (ds.getFlowData().isEmpty()) {
+			ds.getFlowData().add(factory.createFlowData());
+		}
 	}
 
 	// to avoid different lists when aggregating all exchange lists from the
@@ -30,49 +33,55 @@ public class DataSet {
 	// the lists, since no file is known where several flow data instances are
 	// used anyway)
 	private void aggregateFlowData() {
-		IFlowData flowData = factory.createFlowData();
-		for (IFlowData fd : dataSet.getFlowData()) {
+		var flowData = factory.createFlowData();
+		for (var fd : ds.getFlowData()) {
 			flowData.getExchange().addAll(fd.getExchange());
 			flowData.getAllocation().addAll(fd.getAllocation());
 		}
-		dataSet.getFlowData().clear();
-		dataSet.getFlowData().add(flowData);
+		ds.getFlowData().clear();
+		ds.getFlowData().add(flowData);
 	}
 
-	private void ensureAdministrativeInformationExists() {
-		ensureMetaInformationExists();
-		if (getAdministrativeInformation() == null) {
-			dataSet.getMetaInformation().setAdministrativeInformation(
+	public IMetaInformation withMetaInformation() {
+		if (ds.getMetaInformation() == null) {
+			ds.setMetaInformation(factory.createMetaInformation());
+		}
+		return ds.getMetaInformation();
+	}
+
+	private IAdministrativeInformation withAdministrativeInformation() {
+		IMetaInformation metaInformation = withMetaInformation();
+		if (metaInformation.getAdministrativeInformation() == null) {
+			metaInformation.setAdministrativeInformation(
 					factory.createAdministrativeInformation());
 		}
+		return metaInformation.getAdministrativeInformation();
 	}
 
-	private void ensureModellingAndValidationExists() {
-		ensureMetaInformationExists();
-		if (getModellingAndValidation() == null) {
-			dataSet.getMetaInformation().setModellingAndValidation(
+	private IModellingAndValidation withModellingAndValidation() {
+		IMetaInformation metaInformation = withMetaInformation();
+		if (metaInformation.getModellingAndValidation() == null) {
+			metaInformation.setModellingAndValidation(
 					factory.createModellingAndValidation());
 		}
+		return metaInformation.getModellingAndValidation();
 	}
 
-	private void ensureProcessInformationExists() {
-		ensureMetaInformationExists();
-		if (getProcessInformation() == null) {
-			dataSet.getMetaInformation().setProcessInformation(
+	private IProcessInformation withProcessInformation() {
+		IMetaInformation metaInformation = withMetaInformation();
+		if (metaInformation.getProcessInformation() == null) {
+			metaInformation.setProcessInformation(
 					factory.createProcessInformation());
 		}
+		return metaInformation.getProcessInformation();
 	}
 
-	private void ensureMetaInformationExists() {
-		if (dataSet.getMetaInformation() == null) {
-			dataSet.setMetaInformation(factory.createMetaInformation());
-		}
-	}
+
 
 	private IAdministrativeInformation getAdministrativeInformation() {
 		IAdministrativeInformation administrativeInformation = null;
-		if (dataSet.getMetaInformation() != null) {
-			administrativeInformation = dataSet.getMetaInformation()
+		if (ds.getMetaInformation() != null) {
+			administrativeInformation = ds.getMetaInformation()
 					.getAdministrativeInformation();
 		}
 		return administrativeInformation;
@@ -80,8 +89,8 @@ public class DataSet {
 
 	private IModellingAndValidation getModellingAndValidation() {
 		IModellingAndValidation modellingAndValidation = null;
-		if (dataSet.getMetaInformation() != null) {
-			modellingAndValidation = dataSet.getMetaInformation()
+		if (ds.getMetaInformation() != null) {
+			modellingAndValidation = ds.getMetaInformation()
 					.getModellingAndValidation();
 		}
 		return modellingAndValidation;
@@ -89,8 +98,8 @@ public class DataSet {
 
 	private IProcessInformation getProcessInformation() {
 		IProcessInformation processInformation = null;
-		if (dataSet.getMetaInformation() != null) {
-			processInformation = dataSet.getMetaInformation()
+		if (ds.getMetaInformation() != null) {
+			processInformation = ds.getMetaInformation()
 					.getProcessInformation();
 		}
 		return processInformation;
@@ -105,8 +114,7 @@ public class DataSet {
 	}
 
 	public void setDataEntryBy(IDataEntryBy value) {
-		ensureAdministrativeInformationExists();
-		getAdministrativeInformation().setDataEntryBy(value);
+		withAdministrativeInformation().setDataEntryBy(value);
 	}
 
 	public IDataGeneratorAndPublication getDataGeneratorAndPublication() {
@@ -120,8 +128,7 @@ public class DataSet {
 
 	public void setDataGeneratorAndPublication(
 			IDataGeneratorAndPublication value) {
-		ensureAdministrativeInformationExists();
-		getAdministrativeInformation().setDataGeneratorAndPublication(value);
+		withAdministrativeInformation().setDataGeneratorAndPublication(value);
 	}
 
 	public IDataSetInformation getDataSetInformation() {
@@ -134,24 +141,23 @@ public class DataSet {
 	}
 
 	public void setDataSetInformation(IDataSetInformation value) {
-		ensureProcessInformationExists();
-		getProcessInformation().setDataSetInformation(value);
+		withProcessInformation().setDataSetInformation(value);
 	}
 
 	public List<IExchange> getExchanges() {
 		// list size of 1 is ensured and contains all exchanges
 		// see #initialize
-		return dataSet.getFlowData().get(0).getExchange();
+		return ds.getFlowData().get(0).getExchange();
 	}
 
 	public List<IAllocation> getAllocations() {
 		// list size of 1 is ensured and contains all allocations
 		// see #initialize
-		return dataSet.getFlowData().get(0).getAllocation();
+		return ds.getFlowData().get(0).getAllocation();
 	}
 
 	public String getGenerator() {
-		return dataSet.getGenerator();
+		return ds.getGenerator();
 	}
 
 	public IGeography getGeography() {
@@ -163,26 +169,19 @@ public class DataSet {
 	}
 
 	public void setGeography(IGeography value) {
-		ensureProcessInformationExists();
-		getProcessInformation().setGeography(value);
+		withProcessInformation().setGeography(value);
 	}
 
 	public String getInternalSchemaVersion() {
-		return dataSet.getInternalSchemaVersion();
+		return ds.getInternalSchemaVersion();
 	}
 
 	public int getNumber() {
-		return dataSet.getNumber();
+		return ds.getNumber();
 	}
 
 	public List<IPerson> getPersons() {
-		ensureAdministrativeInformationExists();
-
-		List<IPerson> persons = null;
-		if (getAdministrativeInformation() != null) {
-			persons = getAdministrativeInformation().getPerson();
-		}
-		return persons;
+		return withAdministrativeInformation().getPerson();
 	}
 
 	public IReferenceFunction getReferenceFunction() {
@@ -194,8 +193,7 @@ public class DataSet {
 	}
 
 	public void setReferenceFunction(IReferenceFunction value) {
-		ensureProcessInformationExists();
-		getProcessInformation().setReferenceFunction(value);
+		withProcessInformation().setReferenceFunction(value);
 	}
 
 	public IRepresentativeness getRepresentativeness() {
@@ -208,8 +206,7 @@ public class DataSet {
 	}
 
 	public void setRepresentativeness(IRepresentativeness value) {
-		ensureModellingAndValidationExists();
-		getModellingAndValidation().setRepresentativeness(value);
+		withModellingAndValidation().setRepresentativeness(value);
 	}
 
 	/**
@@ -217,8 +214,7 @@ public class DataSet {
 	 * guaranteed to be never NULL.
 	 */
 	public List<ISource> getSources() {
-		ensureModellingAndValidationExists();
-		return getModellingAndValidation().getSource();
+		return withModellingAndValidation().getSource();
 	}
 
 	public ITechnology getTechnology() {
@@ -231,8 +227,7 @@ public class DataSet {
 	}
 
 	public void setTechnology(ITechnology value) {
-		ensureProcessInformationExists();
-		getProcessInformation().setTechnology(value);
+		withProcessInformation().setTechnology(value);
 	}
 
 	public ITimePeriod getTimePeriod() {
@@ -244,12 +239,11 @@ public class DataSet {
 	}
 
 	public void setTimePeriod(ITimePeriod value) {
-		ensureProcessInformationExists();
-		getProcessInformation().setTimePeriod(value);
+		withProcessInformation().setTimePeriod(value);
 	}
 
 	public XMLGregorianCalendar getTimestamp() {
-		return dataSet.getTimestamp();
+		return ds.getTimestamp();
 	}
 
 	public IValidation getValidation() {
@@ -261,55 +255,7 @@ public class DataSet {
 	}
 
 	public void setValidation(IValidation value) {
-		ensureModellingAndValidationExists();
-		getModellingAndValidation().setValidation(value);
+		withModellingAndValidation().setValidation(value);
 	}
 
-	public String getValidCategories() {
-		return dataSet.getValidCategories();
-	}
-
-	public String getValidCompanyCodes() {
-		return dataSet.getValidCompanyCodes();
-	}
-
-	public String getValidRegionalCodes() {
-		return dataSet.getValidRegionalCodes();
-	}
-
-	public String getValidUnits() {
-		return dataSet.getValidUnits();
-	}
-
-	public void setGenerator(final String value) {
-		dataSet.setGenerator(value);
-	}
-
-	public void setInternalSchemaVersion(final String value) {
-		dataSet.setInternalSchemaVersion(value);
-	}
-
-	public void setNumber(final int value) {
-		dataSet.setNumber(value);
-	}
-
-	public void setTimestamp(final XMLGregorianCalendar value) {
-		dataSet.setTimestamp(value);
-	}
-
-	public void setValidCategories(final String value) {
-		dataSet.setValidCategories(value);
-	}
-
-	public void setValidCompanyCodes(final String value) {
-		dataSet.setValidCompanyCodes(value);
-	}
-
-	public void setValidRegionalCodes(final String value) {
-		dataSet.setValidRegionalCodes(value);
-	}
-
-	public void setValidUnits(final String value) {
-		dataSet.setValidUnits(value);
-	}
 }
