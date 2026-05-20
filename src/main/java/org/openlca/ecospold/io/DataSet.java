@@ -20,27 +20,6 @@ public class DataSet {
 	public DataSet(IDataSet ds, IEcoSpoldFactory factory) {
 		this.ds = Objects.requireNonNull(ds);
 		this.factory = Objects.requireNonNull(factory);
-		if (ds.getFlowData().size() > 1) {
-			aggregateFlowData();
-		}
-		if (ds.getFlowData().isEmpty()) {
-			ds.getFlowData().add(factory.createFlowData());
-		}
-	}
-
-	// to avoid different lists when aggregating all exchange lists from the
-	// different flow data, all exchanges (and allocations) will be appended to
-	// one new flow data object (this is just to ensure safe modifications on
-	// the lists, since no file is known where several flow data instances are
-	// used anyway)
-	private void aggregateFlowData() {
-		var flowData = factory.createFlowData();
-		for (var fd : ds.getFlowData()) {
-			flowData.getExchange().addAll(fd.getExchange());
-			flowData.getAllocation().addAll(fd.getAllocation());
-		}
-		ds.getFlowData().clear();
-		ds.getFlowData().add(flowData);
 	}
 
 	public IMetaInformation withMetaInformation() {
@@ -51,65 +30,58 @@ public class DataSet {
 	}
 
 	private IAdministrativeInformation withAdministrativeInformation() {
-		IMetaInformation metaInformation = withMetaInformation();
-		if (metaInformation.getAdministrativeInformation() == null) {
-			metaInformation.setAdministrativeInformation(
+		var metaInfo = withMetaInformation();
+		if (metaInfo.getAdministrativeInformation() == null) {
+			metaInfo.setAdministrativeInformation(
 				factory.createAdministrativeInformation());
 		}
-		return metaInformation.getAdministrativeInformation();
+		return metaInfo.getAdministrativeInformation();
 	}
 
 	private IModellingAndValidation withModellingAndValidation() {
-		IMetaInformation metaInformation = withMetaInformation();
-		if (metaInformation.getModellingAndValidation() == null) {
-			metaInformation.setModellingAndValidation(
+		var metaInfo = withMetaInformation();
+		if (metaInfo.getModellingAndValidation() == null) {
+			metaInfo.setModellingAndValidation(
 				factory.createModellingAndValidation());
 		}
-		return metaInformation.getModellingAndValidation();
+		return metaInfo.getModellingAndValidation();
 	}
 
 	private IProcessInformation withProcessInformation() {
-		IMetaInformation metaInformation = withMetaInformation();
-		if (metaInformation.getProcessInformation() == null) {
-			metaInformation.setProcessInformation(
+		var metaInfo = withMetaInformation();
+		if (metaInfo.getProcessInformation() == null) {
+			metaInfo.setProcessInformation(
 				factory.createProcessInformation());
 		}
-		return metaInformation.getProcessInformation();
+		return metaInfo.getProcessInformation();
 	}
 
 	private IAdministrativeInformation getAdministrativeInformation() {
-		IAdministrativeInformation administrativeInformation = null;
-		if (ds.getMetaInformation() != null) {
-			administrativeInformation = ds.getMetaInformation()
-				.getAdministrativeInformation();
-		}
-		return administrativeInformation;
+		var metaInfo = ds.getMetaInformation();
+		return metaInfo != null
+			? metaInfo.getAdministrativeInformation()
+			: null;
 	}
 
 	private IModellingAndValidation getModellingAndValidation() {
-		IModellingAndValidation modellingAndValidation = null;
-		if (ds.getMetaInformation() != null) {
-			modellingAndValidation = ds.getMetaInformation()
-				.getModellingAndValidation();
-		}
-		return modellingAndValidation;
+		var metaInfo = ds.getMetaInformation();
+		return metaInfo != null
+			? metaInfo.getModellingAndValidation()
+			: null;
 	}
 
 	private IProcessInformation getProcessInformation() {
-		IProcessInformation processInformation = null;
-		if (ds.getMetaInformation() != null) {
-			processInformation = ds.getMetaInformation()
-				.getProcessInformation();
-		}
-		return processInformation;
+		var metaInfo = ds.getMetaInformation();
+		return metaInfo != null
+			? metaInfo.getProcessInformation()
+			: null;
 	}
 
 	public IDataEntryBy getDataEntryBy() {
-		IDataEntryBy dataEntryBy = null;
-		if (getAdministrativeInformation() != null) {
-			dataEntryBy = getAdministrativeInformation().getDataEntryBy();
-		}
-		return dataEntryBy;
+		var adminInfo = getAdministrativeInformation();
+		return adminInfo != null
+			? adminInfo.getDataEntryBy()
+			: null;
 	}
 
 	public IDataEntryBy withDataEntryBy() {
@@ -121,31 +93,26 @@ public class DataSet {
 	}
 
 	public IDataGeneratorAndPublication getDataGeneratorAndPublication() {
-		IDataGeneratorAndPublication dataGeneratorAndPublication = null;
-		if (getAdministrativeInformation() != null) {
-			dataGeneratorAndPublication = getAdministrativeInformation()
-				.getDataGeneratorAndPublication();
-		}
-		return dataGeneratorAndPublication;
+		var adminInfo = getAdministrativeInformation();
+		return adminInfo != null
+			? adminInfo.getDataGeneratorAndPublication()
+			: null;
 	}
 
 	public IDataGeneratorAndPublication withDataGeneratorAndPublication() {
-		IAdministrativeInformation administrativeInformation =
-			withAdministrativeInformation();
-		if (administrativeInformation.getDataGeneratorAndPublication() == null) {
-			administrativeInformation.setDataGeneratorAndPublication(
+		var adminInfo = withAdministrativeInformation();
+		if (adminInfo.getDataGeneratorAndPublication() == null) {
+			adminInfo.setDataGeneratorAndPublication(
 				factory.createDataGeneratorAndPublication());
 		}
-		return administrativeInformation.getDataGeneratorAndPublication();
+		return adminInfo.getDataGeneratorAndPublication();
 	}
 
 	public IDataSetInformation getDataSetInformation() {
-		IDataSetInformation dataSetInformation = null;
-		if (getProcessInformation() != null) {
-			dataSetInformation = getProcessInformation()
-				.getDataSetInformation();
-		}
-		return dataSetInformation;
+		var procInfo = getProcessInformation();
+		return procInfo != null
+			? procInfo.getDataSetInformation()
+			: null;
 	}
 
 	public IDataSetInformation withDataSetInformation() {
@@ -168,24 +135,19 @@ public class DataSet {
 		return ds.getFlowData().get(0).getAllocation();
 	}
 
-	public String getGenerator() {
-		return ds.getGenerator();
-	}
-
 	public IGeography getGeography() {
-		IGeography geography = null;
-		if (getProcessInformation() != null) {
-			geography = getProcessInformation().getGeography();
-		}
-		return geography;
+		var procInfo = getProcessInformation();
+		return procInfo != null
+			? procInfo.getGeography()
+			: null;
 	}
 
 	public IGeography withGeography() {
-		IProcessInformation processInformation = withProcessInformation();
-		if (processInformation.getGeography() == null) {
-			processInformation.setGeography(factory.createGeography());
+		var procInfo = withProcessInformation();
+		if (procInfo.getGeography() == null) {
+			procInfo.setGeography(factory.createGeography());
 		}
-		return processInformation.getGeography();
+		return procInfo.getGeography();
 	}
 
 	public List<IPerson> getPersons() {
@@ -193,39 +155,35 @@ public class DataSet {
 	}
 
 	public IReferenceFunction getReferenceFunction() {
-		IReferenceFunction referenceFunction = null;
-		if (getProcessInformation() != null) {
-			referenceFunction = getProcessInformation().getReferenceFunction();
-		}
-		return referenceFunction;
+		var procInfo = getProcessInformation();
+		return procInfo != null
+			? procInfo.getReferenceFunction()
+			: null;
 	}
 
 	public IReferenceFunction withReferenceFunction() {
-		IProcessInformation processInformation = withProcessInformation();
-		if (processInformation.getReferenceFunction() == null) {
-			processInformation.setReferenceFunction(
+		var procInfo = withProcessInformation();
+		if (procInfo.getReferenceFunction() == null) {
+			procInfo.setReferenceFunction(
 				factory.createReferenceFunction());
 		}
-		return processInformation.getReferenceFunction();
+		return procInfo.getReferenceFunction();
 	}
 
 	public IRepresentativeness getRepresentativeness() {
-		IRepresentativeness representativeness = null;
-		if (getModellingAndValidation() != null) {
-			representativeness = getModellingAndValidation()
-				.getRepresentativeness();
-		}
-		return representativeness;
+		var modVal = getModellingAndValidation();
+		return modVal != null
+			? modVal.getRepresentativeness()
+			: null;
 	}
 
 	public IRepresentativeness withRepresentativeness() {
-		IModellingAndValidation modellingAndValidation =
-			withModellingAndValidation();
-		if (modellingAndValidation.getRepresentativeness() == null) {
-			modellingAndValidation.setRepresentativeness(
+		var modVal = withModellingAndValidation();
+		if (modVal.getRepresentativeness() == null) {
+			modVal.setRepresentativeness(
 				factory.createRepresentativeness());
 		}
-		return modellingAndValidation.getRepresentativeness();
+		return modVal.getRepresentativeness();
 	}
 
 	/**
@@ -237,57 +195,48 @@ public class DataSet {
 	}
 
 	public ITechnology getTechnology() {
-		ITechnology technology = null;
-		if (getProcessInformation() != null
-			&& getProcessInformation().getTechnology() != null) {
-			technology = getProcessInformation().getTechnology();
-		}
-		return technology;
+		var procInfo = getProcessInformation();
+		return procInfo != null
+			? procInfo.getTechnology()
+			: null;
 	}
 
 	public ITechnology withTechnology() {
-		IProcessInformation processInformation = withProcessInformation();
-		if (processInformation.getTechnology() == null) {
-			processInformation.setTechnology(factory.createTechnology());
+		var procInfo = withProcessInformation();
+		if (procInfo.getTechnology() == null) {
+			procInfo.setTechnology(factory.createTechnology());
 		}
-		return processInformation.getTechnology();
+		return procInfo.getTechnology();
 	}
 
 	public ITimePeriod getTimePeriod() {
-		ITimePeriod timePeriod = null;
-		if (getProcessInformation() != null) {
-			timePeriod = getProcessInformation().getTimePeriod();
-		}
-		return timePeriod;
+		var procInfo = getProcessInformation();
+		return procInfo != null
+			? procInfo.getTimePeriod()
+			: null;
 	}
 
 	public ITimePeriod withTimePeriod() {
-		IProcessInformation processInformation = withProcessInformation();
-		if (processInformation.getTimePeriod() == null) {
-			processInformation.setTimePeriod(factory.createTimePeriod());
+		var procInfo = withProcessInformation();
+		if (procInfo.getTimePeriod() == null) {
+			procInfo.setTimePeriod(factory.createTimePeriod());
 		}
-		return processInformation.getTimePeriod();
-	}
-
-	public XMLGregorianCalendar getTimestamp() {
-		return ds.getTimestamp();
+		return procInfo.getTimePeriod();
 	}
 
 	public IValidation getValidation() {
-		IValidation validation = null;
-		if (getModellingAndValidation() != null) {
-			validation = getModellingAndValidation().getValidation();
-		}
-		return validation;
+		var modVal = getModellingAndValidation();
+		return modVal != null
+			? modVal.getValidation()
+			: null;
 	}
 
 	public IValidation withValidation() {
-		IModellingAndValidation modellingAndValidation =
-			withModellingAndValidation();
-		if (modellingAndValidation.getValidation() == null) {
-			modellingAndValidation.setValidation(factory.createValidation());
+		var modVal = withModellingAndValidation();
+		if (modVal.getValidation() == null) {
+			modVal.setValidation(factory.createValidation());
 		}
-		return modellingAndValidation.getValidation();
+		return modVal.getValidation();
 	}
 
 }
