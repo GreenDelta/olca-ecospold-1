@@ -3,9 +3,7 @@ package org.openlca.ecospold;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.openlca.ecospold.io.DataSet;
-import org.openlca.ecospold.io.DataSetType;
-import org.openlca.ecospold.io.EcoSpold;
+import org.openlca.ecospold.model.IEcoSpoldFactory;
 
 import java.nio.file.Files;
 

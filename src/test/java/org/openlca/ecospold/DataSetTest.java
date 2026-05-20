@@ -7,9 +7,6 @@ import java.io.ByteArrayOutputStream;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.openlca.ecospold.io.DataSet;
-import org.openlca.ecospold.io.DataSetType;
-import org.openlca.ecospold.io.EcoSpold;
 
 public class DataSetTest {
 
