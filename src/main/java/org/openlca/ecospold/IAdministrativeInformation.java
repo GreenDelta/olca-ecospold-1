@@ -69,7 +69,7 @@ public interface IAdministrativeInformation {
 	 *
 	 *
 	 */
-	public abstract List<IPerson> getPerson();
+	public abstract List<IPerson> getPersons();
 
 	/**
 	 * Gets the value of the any property.

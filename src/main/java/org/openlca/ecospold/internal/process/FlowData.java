@@ -77,7 +77,7 @@ class FlowData implements Serializable, IFlowData {
 	 *
 	 */
 	@Override
-	public List<IExchange> getExchange() {
+	public List<IExchange> getExchanges() {
 		if (exchange == null) {
 			exchange = new ArrayList<>();
 		}

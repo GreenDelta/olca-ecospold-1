@@ -130,7 +130,7 @@ class AdministrativeInformation implements Serializable,
 	 *
 	 */
 	@Override
-	public List<IPerson> getPerson() {
+	public List<IPerson> getPersons() {
 		if (person == null) {
 			person = new ArrayList<>();
 		}

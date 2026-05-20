@@ -28,7 +28,7 @@ public interface IFlowData {
 	 *
 	 *
 	 */
-	public abstract List<IExchange> getExchange();
+	public abstract List<IExchange> getExchanges();
 
 	/**
 	 * Gets the value of the allocation property.

@@ -48,7 +48,7 @@ public interface IModellingAndValidation {
 	 *
 	 *
 	 */
-	public abstract List<ISource> getSource();
+	public abstract List<ISource> getSources();
 
 	/**
 	 * Gets the value of the validation property.

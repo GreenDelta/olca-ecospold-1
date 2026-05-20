@@ -104,7 +104,7 @@ class ModellingAndValidation implements Serializable, IModellingAndValidation {
 	 *
 	 */
 	@Override
-	public List<ISource> getSource() {
+	public List<ISource> getSources() {
 		if (source == null) {
 			source = new ArrayList<>();
 		}

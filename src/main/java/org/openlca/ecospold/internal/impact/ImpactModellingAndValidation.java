@@ -81,7 +81,7 @@ class ImpactModellingAndValidation implements Serializable,
 	 *
 	 */
 	@Override
-	public List<ISource> getSource() {
+	public List<ISource> getSources() {
 		if (source == null) {
 			source = new ArrayList<>();
 		}

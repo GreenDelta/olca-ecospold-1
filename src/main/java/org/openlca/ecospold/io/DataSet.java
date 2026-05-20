@@ -2,8 +2,7 @@ package org.openlca.ecospold.io;
 
 import org.openlca.ecospold.*;
 
-import javax.xml.datatype.XMLGregorianCalendar;
-
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -123,16 +122,41 @@ public class DataSet {
 		return procInfo.getDataSetInformation();
 	}
 
+	private IFlowData getFlowData() {
+		return !ds.getFlowData().isEmpty()
+			? ds.getFlowData().getFirst()
+			: null;
+	}
+
+	private IFlowData withFlowData() {
+		var flowData = getFlowData();
+		if (flowData != null)
+			return flowData;
+		flowData = factory.createFlowData();
+		ds.getFlowData().add(flowData);
+		return flowData;
+	}
+
 	public List<IExchange> getExchanges() {
-		// list size of 1 is ensured and contains all exchanges
-		// see #initialize
-		return ds.getFlowData().get(0).getExchange();
+		var flowData = getFlowData();
+		return flowData != null
+			? flowData.getExchanges()
+			: Collections.emptyList();
+	}
+
+	public List<IExchange> withExchanges() {
+		return withFlowData().getExchanges();
 	}
 
 	public List<IAllocation> getAllocations() {
-		// list size of 1 is ensured and contains all allocations
-		// see #initialize
-		return ds.getFlowData().get(0).getAllocation();
+		var flowData = getFlowData();
+		return flowData != null
+			? flowData.getAllocation()
+			: Collections.emptyList();
+	}
+
+	public List<IAllocation> withAllocations() {
+		return withFlowData().getAllocation();
 	}
 
 	public IGeography getGeography() {
@@ -151,7 +175,14 @@ public class DataSet {
 	}
 
 	public List<IPerson> getPersons() {
-		return withAdministrativeInformation().getPerson();
+		var adminInfo = getAdministrativeInformation();
+		return adminInfo != null
+			? adminInfo.getPersons()
+			: Collections.emptyList();
+	}
+
+	public List<IPerson> withPersons() {
+		return withAdministrativeInformation().getPersons();
 	}
 
 	public IReferenceFunction getReferenceFunction() {
@@ -191,7 +222,14 @@ public class DataSet {
 	 * guaranteed to be never NULL.
 	 */
 	public List<ISource> getSources() {
-		return withModellingAndValidation().getSource();
+		var modVal = getModellingAndValidation();
+		return modVal != null
+			? modVal.getSources()
+			: Collections.emptyList();
+	}
+
+	public List<ISource> withSources() {
+		return withModellingAndValidation().getSources();
 	}
 
 	public ITechnology getTechnology() {
