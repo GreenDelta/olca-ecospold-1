@@ -6,15 +6,13 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
 import org.openlca.ecospold.model.IReferenceFunction;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TReferenceFunction", propOrder = { "synonym" })
-class ImpactReferenceFunction implements Serializable, IReferenceFunction {
+class ImpactReferenceFunction implements IReferenceFunction {
 
-	private final static long serialVersionUID = 1L;
 	protected List<String> synonym;
 	@XmlAttribute(name = "datasetRelatesToProduct", required = true)
 	protected boolean datasetRelatesToProduct;

@@ -9,13 +9,11 @@ import org.openlca.ecospold.model.IDataSetInformation;
 import org.openlca.ecospold.model.ILanguageCode;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TDataSetInformation")
-class DataSetInformation implements Serializable, IDataSetInformation {
+class DataSetInformation implements IDataSetInformation {
 
-	private final static long serialVersionUID = 1L;
 	@XmlAttribute(name = "type", required = true)
 	protected int type;
 	@XmlAttribute(name = "impactAssessmentResult", required = true)

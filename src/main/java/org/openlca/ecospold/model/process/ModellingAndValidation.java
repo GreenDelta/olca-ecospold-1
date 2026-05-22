@@ -10,16 +10,14 @@ import org.openlca.ecospold.model.IRepresentativeness;
 import org.openlca.ecospold.model.ISource;
 import org.openlca.ecospold.model.IValidation;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TModellingAndValidation", propOrder = { "representativeness",
 		"source", "validation", "any" })
-class ModellingAndValidation implements Serializable, IModellingAndValidation {
+class ModellingAndValidation implements IModellingAndValidation {
 
-	private final static long serialVersionUID = 1L;
 	@XmlElement(required = true, type = Representativeness.class)
 	protected IRepresentativeness representativeness;
 	@XmlElement(required = true, type = Source.class)

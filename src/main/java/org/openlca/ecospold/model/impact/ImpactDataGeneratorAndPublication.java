@@ -4,17 +4,15 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
+
 import org.openlca.ecospold.model.ICountryCode;
 import org.openlca.ecospold.model.IDataGeneratorAndPublication;
 
-import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TDataGeneratorAndPublication")
-class ImpactDataGeneratorAndPublication implements Serializable,
-		IDataGeneratorAndPublication {
+class ImpactDataGeneratorAndPublication implements IDataGeneratorAndPublication {
 
-	private final static long serialVersionUID = 1L;
 	@XmlAttribute(name = "person", required = true)
 	protected int person;
 	@XmlAttribute(name = "dataPublishedIn")

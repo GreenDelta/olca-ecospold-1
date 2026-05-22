@@ -7,15 +7,13 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 import org.openlca.ecospold.model.IAllocation;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TAllocation", propOrder = { "referenceToInputOutput" })
-class Allocation implements Serializable, IAllocation {
+class Allocation implements IAllocation {
 
-	private final static long serialVersionUID = 1L;
 	@XmlElement(type = Integer.class)
 	protected List<Integer> referenceToInputOutput;
 	@XmlAttribute(name = "referenceToCoProduct", required = true)

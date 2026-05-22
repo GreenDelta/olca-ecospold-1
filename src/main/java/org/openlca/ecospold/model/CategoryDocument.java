@@ -8,9 +8,6 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A EcoSpold 01 category document.
- */
 @XmlRootElement(
 		name = "categories",
 		namespace = "http://www.EcoInvent.org/Categories")

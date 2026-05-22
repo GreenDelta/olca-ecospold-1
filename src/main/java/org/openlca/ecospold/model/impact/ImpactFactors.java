@@ -9,15 +9,13 @@ import org.openlca.ecospold.model.IAllocation;
 import org.openlca.ecospold.model.IExchange;
 import org.openlca.ecospold.model.IFlowData;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TFlowData", propOrder = { "exchange", "any" })
-class ImpactFactors implements Serializable, IFlowData {
+class ImpactFactors implements IFlowData {
 
-	private final static long serialVersionUID = 1L;
 	@XmlElement(required = true, type = ImpactFactor.class)
 	protected List<IExchange> exchange;
 	@XmlAnyElement(lax = true)

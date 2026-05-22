@@ -10,16 +10,14 @@ import org.openlca.ecospold.model.IMetaInformation;
 import org.openlca.ecospold.model.IModellingAndValidation;
 import org.openlca.ecospold.model.IProcessInformation;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TMetaInformation", propOrder = { "processInformation",
 		"modellingAndValidation", "administrativeInformation", "any" })
-class ImpactMetaInformation implements Serializable, IMetaInformation {
+class ImpactMetaInformation implements IMetaInformation {
 
-	private final static long serialVersionUID = 1L;
 	@XmlElement(required = true, type = ImpactProcessInformation.class)
 	protected IProcessInformation processInformation;
 	@XmlElement(required = true, type = ImpactModellingAndValidation.class)

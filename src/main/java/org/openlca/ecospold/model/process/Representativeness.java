@@ -5,76 +5,73 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
+
 import org.openlca.ecospold.model.IRepresentativeness;
 
-import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TRepresentativeness")
-class Representativeness
-    implements Serializable, IRepresentativeness
-{
+class Representativeness implements IRepresentativeness {
 
-    private final static long serialVersionUID = 1L;
-    @XmlAttribute(name = "percent")
-    protected Float percent;
-    @XmlAttribute(name = "productionVolume")
-    protected String productionVolume;
-    @XmlAttribute(name = "samplingProcedure")
-    protected String samplingProcedure;
-    @XmlAttribute(name = "extrapolations")
-    protected String extrapolations;
-    @XmlAttribute(name = "uncertaintyAdjustments")
-    protected String uncertaintyAdjustments;
+	@XmlAttribute(name = "percent")
+	protected Float percent;
+	@XmlAttribute(name = "productionVolume")
+	protected String productionVolume;
+	@XmlAttribute(name = "samplingProcedure")
+	protected String samplingProcedure;
+	@XmlAttribute(name = "extrapolations")
+	protected String extrapolations;
+	@XmlAttribute(name = "uncertaintyAdjustments")
+	protected String uncertaintyAdjustments;
 
-    @Override
+	@Override
 	public Float getPercent() {
-        return percent;
-    }
+		return percent;
+	}
 
-    @Override
+	@Override
 	public void setPercent(Float value) {
-        this.percent = value;
-    }
+		this.percent = value;
+	}
 
-    @Override
+	@Override
 	public String getProductionVolume() {
-        return productionVolume;
-    }
+		return productionVolume;
+	}
 
-    @Override
+	@Override
 	public void setProductionVolume(String value) {
-        this.productionVolume = value;
-    }
+		this.productionVolume = value;
+	}
 
-    @Override
+	@Override
 	public String getSamplingProcedure() {
-        return samplingProcedure;
-    }
+		return samplingProcedure;
+	}
 
-    @Override
+	@Override
 	public void setSamplingProcedure(String value) {
-        this.samplingProcedure = value;
-    }
+		this.samplingProcedure = value;
+	}
 
-    @Override
+	@Override
 	public String getExtrapolations() {
-        return extrapolations;
-    }
+		return extrapolations;
+	}
 
-    @Override
+	@Override
 	public void setExtrapolations(String value) {
-        this.extrapolations = value;
-    }
+		this.extrapolations = value;
+	}
 
-    @Override
+	@Override
 	public String getUncertaintyAdjustments() {
-        return uncertaintyAdjustments;
-    }
+		return uncertaintyAdjustments;
+	}
 
-    @Override
+	@Override
 	public void setUncertaintyAdjustments(String value) {
-        this.uncertaintyAdjustments = value;
-    }
+		this.uncertaintyAdjustments = value;
+	}
 
 }

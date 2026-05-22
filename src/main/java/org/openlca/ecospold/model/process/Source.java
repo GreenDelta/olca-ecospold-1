@@ -5,16 +5,14 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+
 import org.openlca.ecospold.model.ISource;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TSource")
-class Source implements Serializable, ISource {
-
-	private final static long serialVersionUID = 1L;
+class Source implements ISource {
 
 	@XmlAttribute(name = "number", required = true)
 	protected int number;

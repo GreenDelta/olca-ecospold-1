@@ -8,13 +8,10 @@ import jakarta.xml.bind.annotation.XmlType;
 import org.openlca.ecospold.model.ISource;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TSource")
-class ImpactSource implements Serializable, ISource {
-
-	private final static long serialVersionUID = 1L;
+class ImpactSource implements ISource {
 
 	@XmlAttribute(name = "number", required = true)
 	protected int number;

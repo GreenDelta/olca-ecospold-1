@@ -5,40 +5,37 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
+
 import org.openlca.ecospold.model.IDataEntryBy;
 
-import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TDataEntryBy")
-class ImpactDataEntryBy
-    implements Serializable, IDataEntryBy
-{
+class ImpactDataEntryBy implements IDataEntryBy {
 
-    private final static long serialVersionUID = 1L;
-    @XmlAttribute(name = "person", required = true)
-    protected int person;
-    @XmlAttribute(name = "qualityNetwork")
-    protected Long qualityNetwork;
+	@XmlAttribute(name = "person", required = true)
+	protected int person;
+	@XmlAttribute(name = "qualityNetwork")
+	protected Long qualityNetwork;
 
-    @Override
+	@Override
 	public int getPerson() {
-        return person;
-    }
+		return person;
+	}
 
-    @Override
+	@Override
 	public void setPerson(int value) {
-        this.person = value;
-    }
+		this.person = value;
+	}
 
-    @Override
+	@Override
 	public Long getQualityNetwork() {
-        return qualityNetwork;
-    }
+		return qualityNetwork;
+	}
 
-    @Override
+	@Override
 	public void setQualityNetwork(Long value) {
-        this.qualityNetwork = value;
-    }
+		this.qualityNetwork = value;
+	}
 
 }

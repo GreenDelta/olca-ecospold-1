@@ -5,113 +5,110 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
+
 import org.openlca.ecospold.model.ICountryCode;
 import org.openlca.ecospold.model.IPerson;
 
-import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TPerson")
-class Person
-    implements Serializable, IPerson
-{
+class Person implements IPerson {
 
-    private final static long serialVersionUID = 1L;
-    @XmlAttribute(name = "number", required = true)
-    protected int number;
-    @XmlAttribute(name = "name", required = true)
-    protected String name;
-    @XmlAttribute(name = "address", required = true)
-    protected String address;
-    @XmlAttribute(name = "telephone", required = true)
-    protected String telephone;
-    @XmlAttribute(name = "telefax")
-    protected String telefax;
-    @XmlAttribute(name = "email")
-    protected String email;
-    @XmlAttribute(name = "companyCode", required = true)
-    protected String companyCode;
-    @XmlAttribute(name = "countryCode", required = true)
-    protected CountryCode countryCode;
+	@XmlAttribute(name = "number", required = true)
+	protected int number;
+	@XmlAttribute(name = "name", required = true)
+	protected String name;
+	@XmlAttribute(name = "address", required = true)
+	protected String address;
+	@XmlAttribute(name = "telephone", required = true)
+	protected String telephone;
+	@XmlAttribute(name = "telefax")
+	protected String telefax;
+	@XmlAttribute(name = "email")
+	protected String email;
+	@XmlAttribute(name = "companyCode", required = true)
+	protected String companyCode;
+	@XmlAttribute(name = "countryCode", required = true)
+	protected CountryCode countryCode;
 
-    @Override
+	@Override
 	public int getNumber() {
-        return number;
-    }
+		return number;
+	}
 
-    @Override
+	@Override
 	public void setNumber(int value) {
-        this.number = value;
-    }
+		this.number = value;
+	}
 
-    @Override
+	@Override
 	public String getName() {
-        return name;
-    }
+		return name;
+	}
 
-    @Override
+	@Override
 	public void setName(String value) {
-        this.name = value;
-    }
+		this.name = value;
+	}
 
-    @Override
+	@Override
 	public String getAddress() {
-        return address;
-    }
+		return address;
+	}
 
-    @Override
+	@Override
 	public void setAddress(String value) {
-        this.address = value;
-    }
+		this.address = value;
+	}
 
-    @Override
+	@Override
 	public String getTelephone() {
-        return telephone;
-    }
+		return telephone;
+	}
 
-    @Override
+	@Override
 	public void setTelephone(String value) {
-        this.telephone = value;
-    }
+		this.telephone = value;
+	}
 
-    @Override
+	@Override
 	public String getTelefax() {
-        return telefax;
-    }
+		return telefax;
+	}
 
-    @Override
+	@Override
 	public void setTelefax(String value) {
-        this.telefax = value;
-    }
+		this.telefax = value;
+	}
 
-    @Override
+	@Override
 	public String getEmail() {
-        return email;
-    }
+		return email;
+	}
 
-    @Override
+	@Override
 	public void setEmail(String value) {
-        this.email = value;
-    }
+		this.email = value;
+	}
 
-    @Override
+	@Override
 	public String getCompanyCode() {
-        return companyCode;
-    }
+		return companyCode;
+	}
 
-    @Override
+	@Override
 	public void setCompanyCode(String value) {
-        this.companyCode = value;
-    }
+		this.companyCode = value;
+	}
 
-    @Override
+	@Override
 	public ICountryCode getCountryCode() {
-        return countryCode;
-    }
+		return countryCode;
+	}
 
-    @Override
+	@Override
 	public void setCountryCode(ICountryCode value) {
-        this.countryCode = (CountryCode) value;
-    }
+		this.countryCode = (CountryCode) value;
+	}
 
 }

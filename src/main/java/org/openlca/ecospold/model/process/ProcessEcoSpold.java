@@ -12,15 +12,13 @@ import org.openlca.ecospold.model.IDataSet;
 import org.openlca.ecospold.model.IEcoSpold;
 import org.openlca.ecospold.model.IEcoSpoldFactory;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TEcoSpold", propOrder = {"dataset", "any"})
-public class ProcessEcoSpold implements Serializable, IEcoSpold {
+public class ProcessEcoSpold implements IEcoSpold {
 
-	private final static long serialVersionUID = 1L;
 	@XmlElement(required = true, type = DataSet.class)
 	protected List<IDataSet> dataset;
 	@XmlAnyElement(lax = true)

@@ -6,120 +6,117 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+
 import org.openlca.ecospold.model.ITimePeriod;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TTimePeriod", propOrder = {
-    "startYear",
-    "startYearMonth",
-    "startDate",
-    "endYear",
-    "endYearMonth",
-    "endDate"
+	"startYear",
+	"startYearMonth",
+	"startDate",
+	"endYear",
+	"endYearMonth",
+	"endDate"
 })
-class ImpactTimePeriod
-    implements Serializable, ITimePeriod
-{
+class ImpactTimePeriod implements ITimePeriod {
 
-    private final static long serialVersionUID = 1L;
-    @XmlSchemaType(name = "gYear")
-    protected XMLGregorianCalendar startYear;
-    @XmlSchemaType(name = "gYearMonth")
-    protected XMLGregorianCalendar startYearMonth;
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar startDate;
-    @XmlSchemaType(name = "gYear")
-    protected XMLGregorianCalendar endYear;
-    @XmlSchemaType(name = "gYearMonth")
-    protected XMLGregorianCalendar endYearMonth;
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar endDate;
-    @XmlAttribute(name = "dataValidForEntirePeriod", required = true)
-    protected boolean dataValidForEntirePeriod;
-    @XmlAttribute(name = "text")
-    protected String text;
+	@XmlSchemaType(name = "gYear")
+	protected XMLGregorianCalendar startYear;
+	@XmlSchemaType(name = "gYearMonth")
+	protected XMLGregorianCalendar startYearMonth;
+	@XmlSchemaType(name = "date")
+	protected XMLGregorianCalendar startDate;
+	@XmlSchemaType(name = "gYear")
+	protected XMLGregorianCalendar endYear;
+	@XmlSchemaType(name = "gYearMonth")
+	protected XMLGregorianCalendar endYearMonth;
+	@XmlSchemaType(name = "date")
+	protected XMLGregorianCalendar endDate;
+	@XmlAttribute(name = "dataValidForEntirePeriod", required = true)
+	protected boolean dataValidForEntirePeriod;
+	@XmlAttribute(name = "text")
+	protected String text;
 
-    @Override
+	@Override
 	public XMLGregorianCalendar getStartYear() {
-        return startYear;
-    }
+		return startYear;
+	}
 
-    @Override
+	@Override
 	public void setStartYear(XMLGregorianCalendar value) {
-        this.startYear = value;
-    }
+		this.startYear = value;
+	}
 
-    @Override
+	@Override
 	public XMLGregorianCalendar getStartYearMonth() {
-        return startYearMonth;
-    }
+		return startYearMonth;
+	}
 
-    @Override
+	@Override
 	public void setStartYearMonth(XMLGregorianCalendar value) {
-        this.startYearMonth = value;
-    }
+		this.startYearMonth = value;
+	}
 
-    @Override
+	@Override
 	public XMLGregorianCalendar getStartDate() {
-        return startDate;
-    }
+		return startDate;
+	}
 
-    @Override
+	@Override
 	public void setStartDate(XMLGregorianCalendar value) {
-        this.startDate = value;
-    }
+		this.startDate = value;
+	}
 
-    @Override
+	@Override
 	public XMLGregorianCalendar getEndYear() {
-        return endYear;
-    }
+		return endYear;
+	}
 
-    @Override
+	@Override
 	public void setEndYear(XMLGregorianCalendar value) {
-        this.endYear = value;
-    }
+		this.endYear = value;
+	}
 
-    @Override
+	@Override
 	public XMLGregorianCalendar getEndYearMonth() {
-        return endYearMonth;
-    }
+		return endYearMonth;
+	}
 
-    @Override
+	@Override
 	public void setEndYearMonth(XMLGregorianCalendar value) {
-        this.endYearMonth = value;
-    }
+		this.endYearMonth = value;
+	}
 
-    @Override
+	@Override
 	public XMLGregorianCalendar getEndDate() {
-        return endDate;
-    }
+		return endDate;
+	}
 
-    @Override
+	@Override
 	public void setEndDate(XMLGregorianCalendar value) {
-        this.endDate = value;
-    }
+		this.endDate = value;
+	}
 
-    @Override
+	@Override
 	public boolean isDataValidForEntirePeriod() {
-        return dataValidForEntirePeriod;
-    }
+		return dataValidForEntirePeriod;
+	}
 
-    @Override
+	@Override
 	public void setDataValidForEntirePeriod(boolean value) {
-        this.dataValidForEntirePeriod = value;
-    }
+		this.dataValidForEntirePeriod = value;
+	}
 
-    @Override
+	@Override
 	public String getText() {
-        return text;
-    }
+		return text;
+	}
 
-    @Override
+	@Override
 	public void setText(String value) {
-        this.text = value;
-    }
+		this.text = value;
+	}
 
 }

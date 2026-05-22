@@ -12,16 +12,14 @@ import org.openlca.ecospold.model.IReferenceFunction;
 import org.openlca.ecospold.model.ITechnology;
 import org.openlca.ecospold.model.ITimePeriod;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TProcessInformation", propOrder = { "referenceFunction",
 		"geography", "timePeriod", "dataSetInformation", "any" })
-class ImpactProcessInformation implements Serializable, IProcessInformation {
+class ImpactProcessInformation implements IProcessInformation {
 
-	private final static long serialVersionUID = 1L;
 	@XmlElement(required = true, type = ImpactReferenceFunction.class)
 	protected IReferenceFunction referenceFunction;
 	@XmlElement(required = true, type = ImpactGeography.class)

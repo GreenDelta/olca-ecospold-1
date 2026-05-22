@@ -12,15 +12,13 @@ import org.openlca.ecospold.model.IFlowData;
 import org.openlca.ecospold.model.IMetaInformation;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TDataset", propOrder = { "metaInformation", "flowData", "any" })
-class ImpactDataSet implements Serializable, IDataSet {
+class ImpactDataSet implements IDataSet {
 
-	private final static long serialVersionUID = 1L;
 	@XmlElement(required = true, type = ImpactMetaInformation.class)
 	protected IMetaInformation metaInformation;
 	@XmlElement(required = true, type = ImpactFactors.class)

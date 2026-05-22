@@ -9,17 +9,14 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 import org.openlca.ecospold.model.IDataSet;
 import org.openlca.ecospold.model.IEcoSpold;
-import org.openlca.ecospold.model.IEcoSpoldFactory;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TEcoSpold", propOrder = { "dataset", "any" })
-public class ImpactEcoSpold implements Serializable, IEcoSpold {
+public class ImpactEcoSpold implements IEcoSpold {
 
-	private final static long serialVersionUID = 1L;
 	@XmlElement(required = true, type = ImpactDataSet.class)
 	protected List<IDataSet> dataset;
 	@XmlAnyElement(lax = true)

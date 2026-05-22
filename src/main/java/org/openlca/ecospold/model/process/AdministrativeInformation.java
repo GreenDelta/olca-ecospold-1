@@ -5,22 +5,20 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAnyElement;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+
 import org.openlca.ecospold.model.IAdministrativeInformation;
 import org.openlca.ecospold.model.IDataEntryBy;
 import org.openlca.ecospold.model.IDataGeneratorAndPublication;
 import org.openlca.ecospold.model.IPerson;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TAdministrativeInformation", propOrder = { "dataEntryBy",
-		"dataGeneratorAndPublication", "person", "any" })
-class AdministrativeInformation implements Serializable,
-		IAdministrativeInformation {
+@XmlType(name = "TAdministrativeInformation", propOrder = {"dataEntryBy",
+	"dataGeneratorAndPublication", "person", "any"})
+class AdministrativeInformation implements IAdministrativeInformation {
 
-	private final static long serialVersionUID = 1L;
 	@XmlElement(required = true, type = DataEntryBy.class)
 	protected IDataEntryBy dataEntryBy;
 	@XmlElement(required = true, type = DataGeneratorAndPublication.class)
@@ -47,7 +45,7 @@ class AdministrativeInformation implements Serializable,
 
 	@Override
 	public void setDataGeneratorAndPublication(
-			IDataGeneratorAndPublication value) {
+		IDataGeneratorAndPublication value) {
 		this.dataGeneratorAndPublication = value;
 	}
 

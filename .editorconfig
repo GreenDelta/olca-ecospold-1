@@ -12,12 +12,12 @@ indent_style = tab
 indent_size = 2
 tab_width = 2
 
-[*.{md}]
+[*.md]
 indent_style = space
 indent_size = 2
 tab_width = 2
 
-[*.{py}]
+[*.py]
 indent_style = space
 indent_size = 4
 tab_width = 4

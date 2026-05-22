@@ -6,13 +6,11 @@ import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
 import org.openlca.ecospold.model.IExchange;
 
-import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TExchange", propOrder = {"inputGroup", "outputGroup"})
-class ImpactFactor implements Serializable, IExchange {
+class ImpactFactor implements IExchange {
 
-	private final static long serialVersionUID = 1L;
 	protected Integer inputGroup;
 	protected Integer outputGroup;
 	@XmlAttribute(name = "number", required = true)

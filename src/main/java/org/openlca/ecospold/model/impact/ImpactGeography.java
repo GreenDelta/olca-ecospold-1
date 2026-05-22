@@ -5,40 +5,37 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
+
 import org.openlca.ecospold.model.IGeography;
 
-import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TGeography")
-class ImpactGeography
-    implements Serializable, IGeography
-{
+class ImpactGeography implements IGeography {
 
-    private final static long serialVersionUID = 1L;
-    @XmlAttribute(name = "location", required = true)
-    protected String location;
-    @XmlAttribute(name = "text")
-    protected String text;
+	@XmlAttribute(name = "location", required = true)
+	protected String location;
+	@XmlAttribute(name = "text")
+	protected String text;
 
-    @Override
+	@Override
 	public String getLocation() {
-        return location;
-    }
+		return location;
+	}
 
-    @Override
+	@Override
 	public void setLocation(String value) {
-        this.location = value;
-    }
+		this.location = value;
+	}
 
-    @Override
+	@Override
 	public String getText() {
-        return text;
-    }
+		return text;
+	}
 
-    @Override
+	@Override
 	public void setText(String value) {
-        this.text = value;
-    }
+		this.text = value;
+	}
 
 }

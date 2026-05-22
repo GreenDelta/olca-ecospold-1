@@ -10,17 +10,14 @@ import org.openlca.ecospold.model.IRepresentativeness;
 import org.openlca.ecospold.model.ISource;
 import org.openlca.ecospold.model.IValidation;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TModellingAndValidation", propOrder = { "source",
 		"validation", "any" })
-class ImpactModellingAndValidation implements Serializable,
-		IModellingAndValidation {
+class ImpactModellingAndValidation implements IModellingAndValidation {
 
-	private final static long serialVersionUID = 1L;
 	@XmlElement(required = true, type = ImpactSource.class)
 	protected List<ISource> source;
 	@XmlElement(type = ImpactValidation.class)

@@ -5,52 +5,49 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlType;
+
 import org.openlca.ecospold.model.IValidation;
 
-import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TValidation")
-class ImpactValidation
-    implements Serializable, IValidation
-{
+class ImpactValidation implements IValidation {
 
-    private final static long serialVersionUID = 1L;
-    @XmlAttribute(name = "proofReadingDetails", required = true)
-    protected String proofReadingDetails;
-    @XmlAttribute(name = "proofReadingValidator", required = true)
-    protected int proofReadingValidator;
-    @XmlAttribute(name = "otherDetails")
-    protected String otherDetails;
+	@XmlAttribute(name = "proofReadingDetails", required = true)
+	protected String proofReadingDetails;
+	@XmlAttribute(name = "proofReadingValidator", required = true)
+	protected int proofReadingValidator;
+	@XmlAttribute(name = "otherDetails")
+	protected String otherDetails;
 
-    @Override
+	@Override
 	public String getProofReadingDetails() {
-        return proofReadingDetails;
-    }
+		return proofReadingDetails;
+	}
 
-    @Override
+	@Override
 	public void setProofReadingDetails(String value) {
-        this.proofReadingDetails = value;
-    }
+		this.proofReadingDetails = value;
+	}
 
-    @Override
+	@Override
 	public int getProofReadingValidator() {
-        return proofReadingValidator;
-    }
+		return proofReadingValidator;
+	}
 
-    @Override
+	@Override
 	public void setProofReadingValidator(int value) {
-        this.proofReadingValidator = value;
-    }
+		this.proofReadingValidator = value;
+	}
 
-    @Override
+	@Override
 	public String getOtherDetails() {
-        return otherDetails;
-    }
+		return otherDetails;
+	}
 
-    @Override
+	@Override
 	public void setOtherDetails(String value) {
-        this.otherDetails = value;
-    }
+		this.otherDetails = value;
+	}
 
 }
