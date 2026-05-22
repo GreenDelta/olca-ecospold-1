@@ -50,9 +50,9 @@ public interface IExchange {
 
 	void setMeanValue(double value);
 
-	Integer getUncertaintyType();
+	int getUncertaintyType();
 
-	void setUncertaintyType(Integer value);
+	void setUncertaintyType(int value);
 
 	Double getStandardDeviation95();
 

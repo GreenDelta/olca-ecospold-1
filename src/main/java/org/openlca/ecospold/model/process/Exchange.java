@@ -39,7 +39,7 @@ class Exchange implements IExchange {
 	@XmlAttribute(name = "meanValue", required = true)
 	protected double meanValue;
 	@XmlAttribute(name = "uncertaintyType")
-	protected Integer uncertaintyType;
+	protected int uncertaintyType;
 	@XmlAttribute(name = "standardDeviation95")
 	protected Double standardDeviation95;
 	@XmlAttribute(name = "formula")
@@ -182,12 +182,12 @@ class Exchange implements IExchange {
 	}
 
 	@Override
-	public Integer getUncertaintyType() {
+	public int getUncertaintyType() {
 		return uncertaintyType;
 	}
 
 	@Override
-	public void setUncertaintyType(Integer value) {
+	public void setUncertaintyType(int value) {
 		this.uncertaintyType = value;
 	}
 

@@ -34,7 +34,7 @@ class ImpactFactor implements IExchange {
 	@XmlAttribute(name = "meanValue", required = true)
 	protected double meanValue;
 	@XmlAttribute(name = "uncertaintyType")
-	protected Integer uncertaintyType;
+	protected int uncertaintyType;
 	@XmlAttribute(name = "standardDeviation95")
 	protected Double standardDeviation95;
 	@XmlAttribute(name = "formula")
@@ -157,7 +157,7 @@ class ImpactFactor implements IExchange {
 	}
 
 	@Override
-	public Integer getUncertaintyType() {
+	public int getUncertaintyType() {
 		return uncertaintyType;
 	}
 
@@ -172,117 +172,117 @@ class ImpactFactor implements IExchange {
 	}
 
 	@Override
-	public void setCASNumber(final String value) {
+	public void setCASNumber(String value) {
 		this.casNumber = value;
 	}
 
 	@Override
-	public void setCategory(final String value) {
+	public void setCategory(String value) {
 		this.category = value;
 	}
 
 	@Override
-	public void setFormula(final String value) {
+	public void setFormula(String value) {
 		this.formula = value;
 	}
 
 	@Override
-	public void setGeneralComment(final String value) {
+	public void setGeneralComment(String value) {
 		this.generalComment = value;
 	}
 
 	@Override
-	public void setInfrastructureProcess(final Boolean value) {
+	public void setInfrastructureProcess(Boolean value) {
 		this.infrastructureProcess = value;
 	}
 
 	@Override
-	public void setInputGroup(final Integer value) {
+	public void setInputGroup(Integer value) {
 		this.inputGroup = value;
 	}
 
 	@Override
-	public void setLocalCategory(final String value) {
+	public void setLocalCategory(String value) {
 		this.localCategory = value;
 	}
 
 	@Override
-	public void setLocalName(final String value) {
+	public void setLocalName(String value) {
 		this.localName = value;
 	}
 
 	@Override
-	public void setLocalSubCategory(final String value) {
+	public void setLocalSubCategory(String value) {
 		this.localSubCategory = value;
 	}
 
 	@Override
-	public void setLocation(final String value) {
+	public void setLocation(String value) {
 		this.location = value;
 	}
 
 	@Override
-	public void setMaxValue(final Double value) {
+	public void setMaxValue(Double value) {
 		this.maxValue = value;
 	}
 
 	@Override
-	public void setMeanValue(final double value) {
+	public void setMeanValue(double value) {
 		this.meanValue = value;
 	}
 
 	@Override
-	public void setMinValue(final Double value) {
+	public void setMinValue(Double value) {
 		this.minValue = value;
 	}
 
 	@Override
-	public void setMostLikelyValue(final Double value) {
+	public void setMostLikelyValue(Double value) {
 		this.mostLikelyValue = value;
 	}
 
 	@Override
-	public void setName(final String value) {
+	public void setName(String value) {
 		this.name = value;
 	}
 
 	@Override
-	public void setNumber(final int value) {
+	public void setNumber(int value) {
 		this.number = value;
 	}
 
 	@Override
-	public void setOutputGroup(final Integer value) {
+	public void setOutputGroup(Integer value) {
 		this.outputGroup = value;
 	}
 
 	@Override
-	public void setPageNumbers(final String value) {
+	public void setPageNumbers(String value) {
 		this.pageNumbers = value;
 	}
 
 	@Override
-	public void setReferenceToSource(final Integer value) {
+	public void setReferenceToSource(Integer value) {
 		this.referenceToSource = value;
 	}
 
 	@Override
-	public void setStandardDeviation95(final Double value) {
+	public void setStandardDeviation95(Double value) {
 		this.standardDeviation95 = value;
 	}
 
 	@Override
-	public void setSubCategory(final String value) {
+	public void setSubCategory(String value) {
 		this.subCategory = value;
 	}
 
 	@Override
-	public void setUncertaintyType(final Integer value) {
+	public void setUncertaintyType(int value) {
 		this.uncertaintyType = value;
 	}
 
 	@Override
-	public void setUnit(final String value) {
+	public void setUnit(String value) {
 		this.unit = value;
 	}
 }
