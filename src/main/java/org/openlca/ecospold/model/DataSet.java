@@ -15,23 +15,15 @@ import java.util.Objects;
 /// The `with*` methods are intended for writing data sets. They create the
 /// required path and target structure on demand, so that the returned object or
 /// list can be modified directly.
-public class DataSet {
-
-	private final IDataSet root;
-	private final IEcoSpoldFactory factory;
+///
+/// @param root The underlying raw data set that is queried or modified by this
+/// wrapper.
+/// @param factory The factory for creating the respective EcoSpold elements.
+public record DataSet(IDataSet root, IEcoSpoldFactory factory) {
 
 	public DataSet(IDataSet root, IEcoSpoldFactory factory) {
 		this.root = Objects.requireNonNull(root);
 		this.factory = Objects.requireNonNull(factory);
-	}
-
-	/// Returns the root of the underlying raw dataset of this wrapper.
-	public IDataSet root() {
-		return root;
-	}
-
-	public IEcoSpoldFactory factory() {
-		return factory;
 	}
 
 	public IMetaInformation withMetaInformation() {
@@ -161,6 +153,13 @@ public class DataSet {
 		return withFlowData().getExchanges();
 	}
 
+	/// Creates a new exchange instance, adds it to this dataset, and returns it.
+	public IExchange withExchange() {
+		var exchange = factory.createExchange();
+		withExchanges().add(exchange);
+		return exchange;
+	}
+
 	public List<IAllocation> getAllocations() {
 		var flowData = getFlowData();
 		return flowData != null
@@ -170,6 +169,13 @@ public class DataSet {
 
 	public List<IAllocation> withAllocations() {
 		return withFlowData().getAllocation();
+	}
+
+	/// Creates a new allocation instance, adds it to this dataset, and returns it.
+	public IAllocation withAllocation() {
+		var allocation = factory.createAllocation();
+		withAllocations().add(allocation);
+		return allocation;
 	}
 
 	public IGeography getGeography() {
@@ -196,6 +202,20 @@ public class DataSet {
 
 	public List<IPerson> withPersons() {
 		return withAdministrativeInformation().getPersons();
+	}
+
+	/// Creates a new source instance, adds it to this dataset, and returns it.
+	public ISource withSource() {
+		var source = factory.createSource();
+		withSources().add(source);
+		return source;
+	}
+
+	/// Creates a new person instance, adds it to this dataset, and returns it.
+	public IPerson withPerson() {
+		var p = factory.createPerson();
+		withPersons().add(p);
+		return p;
 	}
 
 	public IReferenceFunction getReferenceFunction() {
