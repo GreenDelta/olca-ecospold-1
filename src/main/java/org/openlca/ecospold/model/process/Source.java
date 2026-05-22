@@ -15,35 +15,50 @@ import java.io.Serializable;
 class Source implements Serializable, ISource {
 
 	private final static long serialVersionUID = 1L;
+
 	@XmlAttribute(name = "number", required = true)
 	protected int number;
+
 	@XmlAttribute(name = "sourceType")
-	protected Integer sourceType;
+	protected int sourceType;
+
 	@XmlAttribute(name = "firstAuthor", required = true)
 	protected String firstAuthor;
+
 	@XmlAttribute(name = "additionalAuthors")
 	protected String additionalAuthors;
+
 	@XmlAttribute(name = "year", required = true)
 	@XmlSchemaType(name = "gYear")
 	protected XMLGregorianCalendar year;
+
 	@XmlAttribute(name = "title", required = true)
 	protected String title;
+
 	@XmlAttribute(name = "pageNumbers")
 	protected String pageNumbers;
+
 	@XmlAttribute(name = "nameOfEditors")
 	protected String nameOfEditors;
+
 	@XmlAttribute(name = "titleOfAnthology")
 	protected String titleOfAnthology;
+
 	@XmlAttribute(name = "placeOfPublications", required = true)
 	protected String placeOfPublications;
+
 	@XmlAttribute(name = "publisher")
 	protected String publisher;
+
 	@XmlAttribute(name = "journal")
 	protected String journal;
+
 	@XmlAttribute(name = "volumeNo")
 	protected Long volumeNo;
+
 	@XmlAttribute(name = "issueNo")
 	protected String issueNo;
+
 	@XmlAttribute(name = "text")
 	protected String text;
 
@@ -59,13 +74,11 @@ class Source implements Serializable, ISource {
 
 	@Override
 	public int getSourceType() {
-		if (sourceType == null)
-			return 0;
 		return sourceType;
 	}
 
 	@Override
-	public void setSourceType(Integer value) {
+	public void setSourceType(int value) {
 		this.sourceType = value;
 	}
 

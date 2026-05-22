@@ -10,7 +10,7 @@ public interface ISource {
 
 	int getSourceType();
 
-	void setSourceType(Integer value);
+	void setSourceType(int value);
 
 	String getFirstAuthor();
 
