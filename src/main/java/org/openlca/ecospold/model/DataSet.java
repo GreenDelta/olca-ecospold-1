@@ -4,6 +4,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import org.openlca.ecospold.model.impact.ImpactMethodFactory;
+import org.openlca.ecospold.model.process.ProcessFactory;
+
 /// Wraps a single EcoSpold data set instance and provides convenient access
 /// to its nested structures.
 ///
@@ -20,6 +23,18 @@ import java.util.Objects;
 /// wrapper.
 /// @param factory The factory for creating the respective EcoSpold elements.
 public record DataSet(IDataSet root, IEcoSpoldFactory factory) {
+
+	public static DataSet newProcess() {
+		return new DataSet(new ProcessFactory());
+	}
+
+	public static DataSet newImpactMethod() {
+		return new DataSet(new ImpactMethodFactory());
+	}
+
+	public DataSet(IEcoSpoldFactory factory) {
+		this(factory.createDataSet(), factory);
+	}
 
 	public DataSet(IDataSet root, IEcoSpoldFactory factory) {
 		this.root = Objects.requireNonNull(root);

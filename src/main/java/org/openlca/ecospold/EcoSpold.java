@@ -2,11 +2,13 @@ package org.openlca.ecospold;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -106,6 +108,20 @@ public class EcoSpold {
 			};
 		} catch (Exception e) {
 			return Res.error("Failed to parse EcoSpold document of type " + type, e);
+		}
+	}
+
+	public static Res<String> toXml(IEcoSpold spold) {
+		if (spold == null)
+			return Res.error("EcoSpold instance is null");
+		try (var bos = new ByteArrayOutputStream()) {
+			var res = write(bos, spold);
+			if (res.isError())
+				return res.castError();
+			var xml = bos.toString(StandardCharsets.UTF_8);
+			return Res.ok(xml);
+		} catch (Exception e) {
+			return Res.error("Failed to convert EcoSpold instance to string", e);
 		}
 	}
 
