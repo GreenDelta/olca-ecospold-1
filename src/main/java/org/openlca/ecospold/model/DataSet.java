@@ -3,8 +3,11 @@ package org.openlca.ecospold.model;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 import org.openlca.ecospold.model.impact.ImpactMethodFactory;
+import org.openlca.ecospold.model.process.ProcessEcoSpold;
 import org.openlca.ecospold.model.process.ProcessFactory;
 
 /// Wraps a single EcoSpold data set instance and provides convenient access
@@ -19,7 +22,7 @@ import org.openlca.ecospold.model.process.ProcessFactory;
 /// required path and target structure on demand, so that the returned object or
 /// list can be modified directly.
 ///
-/// @param root The underlying raw data set that is queried or modified by this
+/// @param root    The underlying raw data set that is queried or modified by this
 /// wrapper.
 /// @param factory The factory for creating the respective EcoSpold elements.
 public record DataSet(IDataSet root, IEcoSpoldFactory factory) {
@@ -30,6 +33,27 @@ public record DataSet(IDataSet root, IEcoSpoldFactory factory) {
 
 	public static DataSet newImpactMethod() {
 		return new DataSet(new ImpactMethodFactory());
+	}
+
+	public static Optional<DataSet> first(IEcoSpold spold) {
+		if (spold == null || spold.getDataSets().isEmpty())
+			return Optional.empty();
+		var first = spold.getDataSets().getFirst();
+		var ds = spold instanceof ProcessEcoSpold
+			? new DataSet(first, new ProcessFactory())
+			: new DataSet(first, new ImpactMethodFactory());
+		return Optional.of(ds);
+	}
+
+	public void each(IEcoSpold spold, Consumer<DataSet> fn) {
+		if (spold == null || fn == null || spold.getDataSets().isEmpty())
+			return;
+		var factory = spold instanceof ProcessEcoSpold
+			? new ProcessFactory()
+			: new ImpactMethodFactory();
+		for (var ds : spold.getDataSets()) {
+			fn.accept(new DataSet(ds, factory));
+		}
 	}
 
 	public DataSet(IEcoSpoldFactory factory) {
