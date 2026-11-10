@@ -5,13 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.target>21</maven.compiler.target>
-  	<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.release>25</maven.compiler.release>
 	</properties>
 
 	<groupId>org.openlca</groupId>
 	<artifactId>olca-ecospold-1</artifactId>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>An API for reading and writing datasets in the EcoSpold 1 format.</description>
@@ -67,19 +66,19 @@
 		<dependency>
 			<groupId>org.openlca</groupId>
 			<artifactId>olca-commons</artifactId>
-			<version>1.0.0</version>
+			<version>1.2.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
 			<artifactId>jakarta.xml.bind-api</artifactId>
-			<version>4.0.4</version>
+			<version>4.0.5</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
-			<version>4.0.6</version>
+			<version>4.0.9</version>
 		</dependency>
 
 		<dependency>
@@ -116,7 +115,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>3.3.1</version>
+						<version>3.4.0</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -140,14 +139,14 @@
 						</executions>
 					</plugin>
 					<plugin>
-          	<groupId>org.sonatype.central</groupId>
-          	<artifactId>central-publishing-maven-plugin</artifactId>
-          	<version>0.9.0</version>
-          	<extensions>true</extensions>
-          	<configuration>
-            	<publishingServerId>central</publishingServerId>
-          	</configuration>
-        	</plugin>
+						<groupId>org.sonatype.central</groupId>
+						<artifactId>central-publishing-maven-plugin</artifactId>
+						<version>0.12.0</version>
+						<extensions>true</extensions>
+						<configuration>
+							<publishingServerId>central</publishingServerId>
+						</configuration>
+					</plugin>
 				</plugins>
 			</build>
 		</profile>
